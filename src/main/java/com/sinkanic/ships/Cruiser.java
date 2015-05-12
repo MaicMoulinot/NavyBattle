@@ -17,6 +17,8 @@ public class Cruiser extends Ship {
 	 */
 	public Cruiser(int x, int y, boolean vertical) {
 		super(3, x, y, vertical);
+		
+		shipIdentity = "I'm a Cruiser bro !";
 	}
 
 }

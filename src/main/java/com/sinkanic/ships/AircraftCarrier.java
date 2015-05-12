@@ -18,6 +18,8 @@ public class AircraftCarrier extends Ship {
 	 */
 	public AircraftCarrier(int x, int y, boolean vertical) {
 		super(5, x, y, vertical);
+		
+		shipIdentity = "I'm a big bad Aircraft Carrier";
 	}
 
 }

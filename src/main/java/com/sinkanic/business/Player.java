@@ -80,7 +80,7 @@ public class Player {
 	public ArrayList<String> afficheBoats() {
 		ArrayList<String> resultat = new ArrayList<String>();
 		for (Ship bateau : getFlotte()) {
-			resultat.add(bateau.displayPositions());
+			resultat.add(bateau.displayCheatTextEnemyPositions());
 		}
 		return resultat;
 	}

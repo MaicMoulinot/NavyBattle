@@ -17,6 +17,8 @@ public class Battleship extends Ship {
 	 */
 	public Battleship(int x, int y, boolean vertical) {
 		super(4, x, y, vertical);
+		
+		shipIdentity = "I'm the sheriff in da hood. aka Battleship";
 	}
 
 }

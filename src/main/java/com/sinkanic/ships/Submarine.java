@@ -17,6 +17,8 @@ public class Submarine extends Ship {
 	 */
 	public Submarine(int x, int y, boolean vertical) {
 		super(3, x, y, vertical);
+		
+		shipIdentity = "I'm a sneaky sneaky Submarine";
 	}
 
 }

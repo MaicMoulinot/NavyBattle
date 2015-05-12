@@ -17,5 +17,7 @@ public class PatrolBoat extends Ship {
 	 */
 	public PatrolBoat(int x, int y, boolean vertical) {
 		super(2, x, y, vertical);
+		
+		shipIdentity = "O hai, I'm the naval Fast & Furious. aka Patrol Boat";
 	}
 }
