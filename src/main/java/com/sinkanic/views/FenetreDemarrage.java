@@ -28,11 +28,6 @@ public class FenetreDemarrage {
 	/**
 	 * Launch the application.
 	 */
-
-
-	/**
-	 * Create the application.
-	 */
 	public FenetreDemarrage() {
 		initialize();
 		frmBatailleNavale.setVisible(true);

@@ -23,16 +23,14 @@ public class FenetrePartie {
 	private String txtName;
 	private String txtDifficulte;
 	private JFrame frmPartie;
-
-	/**
-	 * @return the frmPartie
-	 */
+	
 	protected JFrame getFrame() {
 		return frmPartie;
 	}
-
+	
 	/**
-	 * Create the application.
+	 * @param name a String the player's name
+	 * @param niveau a String the level
 	 */
 	public FenetrePartie(String name, String niveau) {
 		txtName = name;

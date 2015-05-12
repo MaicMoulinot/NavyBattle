@@ -31,21 +31,16 @@ public class FenetreToucheCoule {
 	private JTextArea txtResultat;
 	private JFrame frmGrille;
 	private Game partie;
-
-	/**
-	 * @return the frmPartie
-	 */
+	
 	protected JFrame getFrame() {
 		return frmGrille;
 	}
-
-	public FenetreToucheCoule(String name, String niveau) {
-		txtName = name;
-		txtDifficulte = niveau;
-		partie = new Game(txtDifficulte);
-		initialize();
-	}
 	
+	/**
+	 * @param name a String 
+	 * @param niveau a String 
+	 * @param game a com.sinkanic.business.Game
+	 */
 	public FenetreToucheCoule(String name, String niveau, Game game) {
 		txtName = name;
 		txtDifficulte = niveau;
