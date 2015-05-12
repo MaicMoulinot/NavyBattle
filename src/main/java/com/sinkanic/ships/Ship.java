@@ -20,9 +20,8 @@ public abstract class Ship {
 	 * 	Base ship
 	 */
 	public Ship(int size, int gridX, int gridY, boolean vertical) {
-		// Set ship orientation
+		// Set ship orientation bool
 		isVertical = vertical;
-
 	}
 
 }
