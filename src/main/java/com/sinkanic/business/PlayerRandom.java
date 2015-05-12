@@ -10,10 +10,7 @@ import java.util.Random;
  *
  */
 public class PlayerRandom extends Player {
-
-	/**
-	 * @return la prochaine tentative du joueur
-	 */
+	
 	public Cell getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical) {
 		nbTries++;
 		Random randomGenerator = new Random();

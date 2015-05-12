@@ -10,10 +10,10 @@ package com.sinkanic.ships;
 public class PatrolBoat extends Ship {
 
 	/**
-	 * @param size
-	 * @param x
-	 * @param y
-	 * @param direction
+	 * @param x int the horizontal position of the first cell
+	 * @param y int the vertical position of the first cell
+	 * @param vertical boolean true if the boat is vertical
+	 * @see com.sinkanic.ships.Ship
 	 */
 	public PatrolBoat(int x, int y, boolean vertical) {
 		super(2, x, y, vertical);

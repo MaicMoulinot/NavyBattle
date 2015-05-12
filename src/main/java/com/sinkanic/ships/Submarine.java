@@ -8,11 +8,12 @@ package com.sinkanic.ships;
  *
  */
 public class Submarine extends Ship {
-
+	
 	/**
-	 * @param x
-	 * @param y
-	 * @param direction
+	 * @param x int the horizontal position of the first cell
+	 * @param y int the vertical position of the first cell
+	 * @param vertical boolean true if the boat is vertical
+	 * @see com.sinkanic.ships.Ship
 	 */
 	public Submarine(int x, int y, boolean vertical) {
 		super(3, x, y, vertical);

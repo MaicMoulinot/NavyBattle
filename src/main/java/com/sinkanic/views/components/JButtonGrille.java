@@ -27,8 +27,8 @@ public abstract class JButtonGrille extends JButton {
 	protected static Color COULEUR_PLACED = new Color(189, 183, 107); //dark khaki
 	
 	/**
-	 * @param positionHorizontale an int 
-	 * @param positionVerticale an int
+	 * @param positionHorizontale an int the horizontal position of the JButton
+	 * @param positionVerticale an int the vertical position of the JButton
 	 */
 	public JButtonGrille(int positionHorizontale, int positionVerticale) {
 		positionX = positionHorizontale;
