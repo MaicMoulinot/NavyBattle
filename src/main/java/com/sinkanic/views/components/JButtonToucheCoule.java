@@ -12,9 +12,10 @@ import java.awt.event.MouseListener;
  */
 @SuppressWarnings("serial")
 public class JButtonToucheCoule extends JButtonGrille {
-
+	
 	/**
-	 * Constructeur.
+	 * @param positionHorizontale
+	 * @param positionVerticale
 	 */
 	public JButtonToucheCoule(int positionHorizontale, int positionVerticale) {
 		super(positionHorizontale, positionVerticale);

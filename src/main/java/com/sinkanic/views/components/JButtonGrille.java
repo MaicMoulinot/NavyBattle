@@ -25,9 +25,10 @@ public abstract class JButtonGrille extends JButton {
 	protected static Color COULEUR_ONMOUSEOVER_KO = new Color(220, 20, 60); //crimson
 	protected static Color COULEUR_HIT = new Color(255, 127, 80); //coral
 	protected static Color COULEUR_PLACED = new Color(189, 183, 107); //dark khaki
-
+	
 	/**
-	 * Constructeur.
+	 * @param positionHorizontale an int 
+	 * @param positionVerticale an int
 	 */
 	public JButtonGrille(int positionHorizontale, int positionVerticale) {
 		positionX = positionHorizontale;
