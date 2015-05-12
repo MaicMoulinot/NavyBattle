@@ -45,9 +45,6 @@ public class FenetreToucheCoule {
 		txtName = name;
 		txtDifficulte = niveau;
 		partie = game;
-		for (Ship bateau : partie.getPlayer1().getFlotte()) {
-			partie.addBoatRandomPlayer2(bateau.getShipSize());
-		}
 		initialize();
 	}
 

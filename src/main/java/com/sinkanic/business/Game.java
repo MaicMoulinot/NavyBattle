@@ -25,7 +25,7 @@ public class Game {
 	 * Joueur.
 	 */
 	private Player player1; //joueur
-	private Player player2; //ordi
+	private PlayerAI player2; //ordi
 	
 	
 	// Méthodes
@@ -41,7 +41,7 @@ public class Game {
 			tailleGrilleVertical = 1;
 			player1 = new Player();
 			player2 = new PlayerAI();
-			addBoatRandomPlayer2(3);
+			addRandomBoatOnPlayerAI(3);
 			break;
 		case FACILE:
 			// 2D 1 bateau de taille 3
@@ -49,8 +49,8 @@ public class Game {
 			tailleGrilleVertical = 10;
 			player1 = new Player();
 			player2 = new PlayerAI();
-			addBoatRandomPlayer2(3);
-			addBoatRandomPlayer2(3);
+			addRandomBoatOnPlayerAI(3);
+			addRandomBoatOnPlayerAI(3);
 			break;
 		case TROP_DUR:
 			// 2D flotte de 2 bateaux de taille 3, 2 bateau de taille 2, 1 bateau de taille 1
@@ -132,7 +132,13 @@ public class Game {
 		return tailleGrilleVertical;
 	}
 
-	public void addBoatRandomPlayer2(int taille) {
-		((PlayerAI) player2).createRandomBoat(tailleGrilleHorizontal, tailleGrilleVertical, taille);
+	public void setFleetAI() {
+		for (Ship bateau : getPlayer1().getFlotte()) {
+			addRandomBoatOnPlayerAI(bateau.getShipSize());
+		}
+	}
+
+	private void addRandomBoatOnPlayerAI(int taille) {
+		player2.createRandomBoat(tailleGrilleHorizontal, tailleGrilleVertical, taille);
 	}
 }
