@@ -31,7 +31,7 @@ public class Game {
 	 * Génère une partie.
 	 * @param <String> difficulte la difficulté choisie
 	 */
-	public void setup(String difficulte) {
+	public Game(String difficulte) {
 		switch (difficulte) {
 		case BIDON:
 			// 1D 1 bateau de taille 3

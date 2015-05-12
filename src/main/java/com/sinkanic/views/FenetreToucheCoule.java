@@ -21,7 +21,6 @@ import javax.swing.SwingConstants;
 
 import com.sinkanic.business.Boat;
 import com.sinkanic.business.Game;
-import com.sinkanic.business.NetBattle;
 import com.sinkanic.views.components.JButtonGrille;
 import com.sinkanic.views.components.JButtonToucheCoule;
 
@@ -43,7 +42,7 @@ public class FenetreToucheCoule {
 	public FenetreToucheCoule(String name, String niveau) {
 		txtName = name;
 		txtDifficulte = niveau;
-		partie = NetBattle.startGame(txtDifficulte);
+		partie = new Game(txtDifficulte);
 		initialize();
 	}
 	
