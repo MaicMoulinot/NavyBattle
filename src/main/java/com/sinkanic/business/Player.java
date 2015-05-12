@@ -110,7 +110,13 @@ public class Player {
 		}
 		return resultat;
 	}
-
+	public boolean addBoatX(Ship shipToAdd, int gridCols, int gridRows, boolean isVertical, int x, int y) {
+		if (!isBoatIntegre(shipToAdd, gridRows, gridCols))
+			return false;
+		listBoats.add(shipToAdd);
+		return true;
+	}
+	
 	public Ship addBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
 		// instantiate proper ship type
 		Ship bateau = null;
