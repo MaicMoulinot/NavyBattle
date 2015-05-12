@@ -10,7 +10,7 @@ public class Cell {
 	private int positionHorizontal;
 	private int positionVertical;
 
-	void setHit() {
+	public void setHit() {
 		isHit = true;
 	}
 

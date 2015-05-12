@@ -15,13 +15,54 @@ public abstract class Ship {
 
 	private ArrayList<Cell>	shipCells;
 	private boolean			isVertical;
+	private String			identity;
 
 	/**
-	 * 	Base ship
+	 * Ship Constructor
+	 * @param size Ship size in <Cell> determined by other ship
+	 * @param gridX Ship origin grid column
+	 * @param gridY Ship origin grid row
+	 * @param vertical signals ship orientation
 	 */
 	public Ship(int size, int gridX, int gridY, boolean vertical) {
-		// Set ship orientation bool
+		// Set ship orientation
 		isVertical = vertical;
-	}
+		shipCells = new ArrayList<Cell>();
 
+		// Ship has no identity. :(
+		identity = "Basic Ship";
+
+		int posX = 0;
+		int posY = 0;
+		// Create ship cells
+		for (int i = 0; i < size; i++) {
+			if (isVertical) {
+				posX = gridX;
+				posY = gridY + i;
+			} else {
+				posX = gridX + i;
+				posY = gridY;
+			}
+			shipCells.add(new Cell(posX, posY));
+		}
+	}
+	
+	/**
+	 * @return ArrayList<Cellule> ship positions list
+	 */
+	public ArrayList<Cell> getPositions() {
+		return shipCells;
+	}
+	
+	public boolean isHit(int testX, int testY) {
+		boolean result = false;
+		for (Cell testCell : shipCells) {
+			if (testCell.isEquals(testX, testY)) {
+				result = true;
+				testCell.setHit();
+				break;
+			}
+		}
+		return result;
+	}	
 }
