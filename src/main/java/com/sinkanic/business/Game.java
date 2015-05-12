@@ -98,10 +98,10 @@ public class Game {
 	/**
 	 * @param testX int the horizontal position to check
 	 * @param testY int the vertical position to check
-	 * @return a String the result 
-	 * @see com.sinkanic.business.Boat.MISSED
-	 * @see com.sinkanic.business.Boat.HIT
-	 * @see com.sinkanic.business.Boat.DESTROYED
+	 * @return a String the result belonging to one of these :
+	 * {@link com.sinkanic.business.Boat#MISSED}
+	 * {@link com.sinkanic.business.Boat#HIT}
+	 * {@link com.sinkanic.business.Boat#DESTROYED}
 	 */
 	public String checkGuess(int testX, int testY) {
 		player1.incrementNbEssais();
