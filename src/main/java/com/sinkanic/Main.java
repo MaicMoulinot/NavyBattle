@@ -6,6 +6,9 @@ import com.sinkanic.views.FenetreDemarrage;
 
 public class Main {
 
+	/**
+	 * @param args String[]
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
