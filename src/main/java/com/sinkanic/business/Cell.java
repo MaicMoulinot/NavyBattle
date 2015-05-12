@@ -10,12 +10,14 @@ public class Cell {
 	private int positionHorizontal;
 	private int positionVertical;
 
-	void setHit() {
+	public void setHit() {
 		isHit = true;
 	}
 
 	/**
-	 * Non touché à l'initialisation
+	 * Untouched when initialized
+	 * @param positionHorizontale int the hotizontal position
+	 * @param positionVerticale int the vertical position
 	 */
 	public Cell(int positionHorizontale, int positionVerticale) {
 		isHit = false;
