@@ -101,6 +101,7 @@ public class FenetreDemarrage {
 		cbbDifficulte.setModel(listeDifficulte);
 		cbbDifficulte.setToolTipText("Tu veux galérer ou pas?");
 		cbbDifficulte.setMaximumRowCount(3);
+		cbbDifficulte.setSelectedIndex(2);
 		GridBagConstraints gbc_cbbDifficulte = new GridBagConstraints();
 		gbc_cbbDifficulte.gridwidth = 2;
 		gbc_cbbDifficulte.insets = new Insets(0, 0, 5, 5);
