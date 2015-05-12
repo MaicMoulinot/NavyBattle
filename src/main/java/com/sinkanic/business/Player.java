@@ -1,7 +1,6 @@
 package com.sinkanic.business;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import com.sinkanic.ships.AircraftCarrier;
 import com.sinkanic.ships.Battleship;
@@ -17,7 +16,7 @@ import com.sinkanic.ships.Submarine;
  * @author humanbooster
  *
  */
-public abstract class Player {
+public class Player {
 
 	protected ArrayList<Ship> listBoats;
 
@@ -38,62 +37,8 @@ public abstract class Player {
 		nbTries = 0;
 	}
 
-	public abstract Cell getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical);
-	//	1ère solution : renvoit les valeurs de 0 à 6 dans l'ordre
-	//	2ème solution : renvoit des tirages aléatoires
-	//	3ème solution : renvoit le choix par bouton
-
 	public void incrementNbEssais() {
 		nbTries++;
-	}
-
-	public void createRandomBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau) {
-		Random randomGenerator = new Random();
-		boolean isVertical = (randomGenerator.nextInt(2) == 0);
-		createRandomBoat(tailleGrilleHorizontal, tailleGrilleVertical, tailleBateau, isVertical);
-	}
-
-	public void createRandomBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical) {
-		int X = 0;
-		int Y = 0;
-		Random randomGenerator = new Random();
-		Ship bateau = null;
-		
-
-
-		do {
-			if(isVertical) {
-				X = randomGenerator.nextInt(tailleGrilleHorizontal);
-				if (tailleGrilleVertical > tailleBateau) {
-					Y = randomGenerator.nextInt(tailleGrilleVertical - tailleBateau);
-				}
-			} else {
-				Y = randomGenerator.nextInt(tailleGrilleVertical);
-				if (tailleGrilleHorizontal > tailleBateau) {
-					X = randomGenerator.nextInt(tailleGrilleHorizontal - tailleBateau);
-				}
-			}
-			
-			// instantiate proper ship type
-			switch (tailleBateau) {
-			case 5:
-				bateau = new AircraftCarrier(X, Y, isVertical);
-				break;
-			case 4:
-				bateau = new Battleship(X, Y, isVertical);
-				break;
-			case 3:
-				bateau = new Submarine(X, Y, isVertical);
-				break;
-			case 2:
-				bateau = new PatrolBoat(X, Y, isVertical);
-				break;
-				
-			default:
-				break;
-			}
-		} while (!isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical));
-		listBoats.add(bateau);
 	}
 
 	/**
@@ -137,7 +82,7 @@ public abstract class Player {
 		return resultat;
 	}
 
-	private boolean isBoatIntegre(Ship nouveauBateau, int tailleGrilleHorizontal, int tailleGrilleVertical) {
+	protected boolean isBoatAddable(Ship nouveauBateau, int tailleGrilleHorizontal, int tailleGrilleVertical) {
 		boolean resultat = true;
 		for (Cell testCellule : nouveauBateau.getPositions()) {
 			if (testCellule.getHorizontalPosition() >= tailleGrilleHorizontal || testCellule.getVerticalPosition() >= tailleGrilleVertical) {
@@ -182,11 +127,10 @@ public abstract class Player {
 		case 2:
 			bateau = new PatrolBoat(firstCellX, firstCellY, isVertical);
 			break;
-			
 		default:
 			break;
 		}
-		if (isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
+		if (isBoatAddable(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
 			listBoats.add(bateau);
 		} else {
 			bateau = null;
@@ -214,10 +158,9 @@ public abstract class Player {
 		default:
 			break;
 		}
-		if (!isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
+		if (!isBoatAddable(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
 			bateau = null;
 		}
 		return bateau;
 	}
-
 }

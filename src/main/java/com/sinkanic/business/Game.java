@@ -39,16 +39,16 @@ public class Game {
 			// 1D 1 bateau de taille 3
 			tailleGrilleHorizontal = 7;
 			tailleGrilleVertical = 1;
-			player1 = new PlayerReel();
-			player2 = new PlayerRandom();
-			addRandomBoatPlayer2();
+			player1 = new Player();
+			player2 = new PlayerAI();
+			addBoatRandomPlayer2(3);
 			break;
 		case FACILE:
 			// 2D 1 bateau de taille 3
 			tailleGrilleHorizontal = 10;
 			tailleGrilleVertical = 10;
-			player1 = new PlayerReel();
-			player2 = new PlayerCroissant();
+			player1 = new Player();
+			player2 = new PlayerAI();
 			addBoatRandomPlayer2(3);
 			addBoatRandomPlayer2(3);
 			break;
@@ -56,8 +56,8 @@ public class Game {
 			// 2D flotte de 2 bateaux de taille 3, 2 bateau de taille 2, 1 bateau de taille 1
 			tailleGrilleHorizontal = 10;
 			tailleGrilleVertical = 10;
-			player1 = new PlayerReel();
-			player2 = new PlayerRandom();
+			player1 = new Player();
+			player2 = new PlayerAI();
 			break;
 		}
 	}
@@ -72,9 +72,9 @@ public class Game {
 	public ArrayList<String> play() {
 		ArrayList<String> result = new ArrayList<String>();
 		try {
-			for (Ship boat : player1.getFlotte()) {
+			for (Ship boat : player2.getFlotte()) {
 				while (!boat.isSunk()) {
-					Cell tryPlayer = player1.getGuess(tailleGrilleHorizontal, tailleGrilleVertical);
+					Cell tryPlayer = ((PlayerAI) player2).getGuess(tailleGrilleHorizontal, tailleGrilleVertical);
 					int X = tryPlayer.getHorizontalPosition();
 					int Y = tryPlayer.getVerticalPosition();
 					result.add("Essai du joueur sur (" + X + "," + Y + "): " + checkGuess(X, Y));
@@ -131,12 +131,8 @@ public class Game {
 	public int getTailleGrilleVertical() {
 		return tailleGrilleVertical;
 	}
-	
-	private void addRandomBoatPlayer2() {
-		addBoatRandomPlayer2(3);
-	}
 
 	public void addBoatRandomPlayer2(int taille) {
-		player2.createRandomBoat(tailleGrilleHorizontal, tailleGrilleVertical, taille);
+		((PlayerAI) player2).createRandomBoat(tailleGrilleHorizontal, tailleGrilleVertical, taille);
 	}
 }
