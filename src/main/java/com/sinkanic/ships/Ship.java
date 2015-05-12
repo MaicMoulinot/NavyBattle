@@ -107,7 +107,7 @@ public abstract class Ship {
 		return result;
 	}
 
-	public String displayPositions() {
+	public String displayCheatTextEnemyPositions() {
 		StringBuilder sb = new StringBuilder();
 		int compteur = 0;
 		sb.append("[");
