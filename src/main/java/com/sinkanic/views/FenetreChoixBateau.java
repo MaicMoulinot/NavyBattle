@@ -1,4 +1,4 @@
-package com.sinkanic.gui;
+package com.sinkanic.views;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -25,8 +25,8 @@ import com.sinkanic.business.Boat;
 import com.sinkanic.business.Cellule;
 import com.sinkanic.business.Game;
 import com.sinkanic.business.NetBattle;
-import com.sinkanic.gui.components.JButtonChoixBateau;
-import com.sinkanic.gui.components.JButtonGrille;
+import com.sinkanic.views.components.JButtonChoixBateau;
+import com.sinkanic.views.components.JButtonGrille;
 
 public class FenetreChoixBateau {
 

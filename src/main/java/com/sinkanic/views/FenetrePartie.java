@@ -1,4 +1,4 @@
-package com.sinkanic.gui;
+package com.sinkanic.views;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -14,8 +14,8 @@ import javax.swing.SwingConstants;
 
 import com.sinkanic.business.Game;
 import com.sinkanic.business.NetBattle;
-import com.sinkanic.gui.components.JButtonDemarrer;
-import com.sinkanic.gui.components.JButtonQuitter;
+import com.sinkanic.views.components.JButtonDemarrer;
+import com.sinkanic.views.components.JButtonQuitter;
 
 import java.awt.Font;
 import java.awt.TextArea;

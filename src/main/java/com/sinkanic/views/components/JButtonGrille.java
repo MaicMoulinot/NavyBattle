@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sinkanic.gui.components;
+package com.sinkanic.views.components;
 
 import java.awt.Color;
 

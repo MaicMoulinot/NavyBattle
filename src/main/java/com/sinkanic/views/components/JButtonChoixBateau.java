@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sinkanic.gui.components;
+package com.sinkanic.views.components;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -11,21 +11,19 @@ import java.awt.event.MouseListener;
  *
  */
 @SuppressWarnings("serial")
-public class JButtonToucheCoule extends JButtonGrille {
+public class JButtonChoixBateau extends JButtonGrille {
 
 	/**
 	 * Constructeur.
 	 */
-	public JButtonToucheCoule(int positionHorizontale, int positionVerticale) {
+	public JButtonChoixBateau(int positionHorizontale, int positionVerticale) {
 		super(positionHorizontale, positionVerticale);
 		addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				if (isHit()) {
-					setColorHit();
-				} else if (isPlayed()) {
-					setColorMissed();
+				if (isPlaced()) {
+					setColorPlaced();
 				} else {
 					setColorUnplayed();
 				}
@@ -33,7 +31,7 @@ public class JButtonToucheCoule extends JButtonGrille {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				setBackground(COULEUR_ONMOUSEOVER);
+				setColorOnMouseOver();
 			}
 
 			@Override
@@ -47,7 +45,7 @@ public class JButtonToucheCoule extends JButtonGrille {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 			}
-			
+
 		});
 	}
 }

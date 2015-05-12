@@ -1,4 +1,4 @@
-package com.sinkanic.gui;
+package com.sinkanic.views;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -22,8 +22,8 @@ import javax.swing.SwingConstants;
 import com.sinkanic.business.Boat;
 import com.sinkanic.business.Game;
 import com.sinkanic.business.NetBattle;
-import com.sinkanic.gui.components.JButtonGrille;
-import com.sinkanic.gui.components.JButtonToucheCoule;
+import com.sinkanic.views.components.JButtonGrille;
+import com.sinkanic.views.components.JButtonToucheCoule;
 
 public class FenetreToucheCoule {
 

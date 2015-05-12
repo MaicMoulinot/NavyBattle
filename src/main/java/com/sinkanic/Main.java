@@ -2,7 +2,7 @@ package com.sinkanic;
 
 import java.awt.EventQueue;
 
-import com.sinkanic.gui.FenetreDemarrage;
+import com.sinkanic.views.FenetreDemarrage;
 
 public class Main {
 
