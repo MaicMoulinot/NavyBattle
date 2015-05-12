@@ -111,7 +111,7 @@ public class Player {
 		return resultat;
 	}
 	public boolean addBoatX(Ship shipToAdd, int gridCols, int gridRows, boolean isVertical, int x, int y) {
-		if (!isBoatIntegre(shipToAdd, gridRows, gridCols))
+		if (!isBoatAddable(shipToAdd, gridRows, gridCols))
 			return false;
 		listBoats.add(shipToAdd);
 		return true;
