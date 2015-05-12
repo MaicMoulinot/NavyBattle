@@ -180,7 +180,6 @@ public class FenetreChoixBateau {
 			public void mouseClicked(MouseEvent e) {
 				frmGrille.setVisible(false);
 				frmGrille.dispose();
-				partie.setFleetAI();
 				FenetreToucheCoule partieGrille = new FenetreToucheCoule(txtName, txtDifficulte, partie);
 				partieGrille.getFrame().setVisible(true);
 			}

@@ -45,6 +45,7 @@ public class FenetreToucheCoule {
 		txtName = name;
 		txtDifficulte = niveau;
 		partie = game;
+		partie.setFleetAI();
 		initialize();
 	}
 
