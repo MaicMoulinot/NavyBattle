@@ -3,7 +3,10 @@
  */
 package com.sinkanic.business;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,8 +14,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.sinkanic.business.Boat;
-import com.sinkanic.business.Cell;
+import com.sinkanic.ships.Ship;
 
 /**
  * @author humanbooster
@@ -20,7 +22,7 @@ import com.sinkanic.business.Cell;
  */
 public class BoatTest {
 	
-	private Boat boat;
+	private Ship boat;
 
 	/**
 	 * @throws java.lang.Exception
@@ -41,7 +43,7 @@ public class BoatTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		boat = new Boat(false, 2, new Cell(0, 0)); 
+		boat = new Ship(2, 0, 0, false); 
 	}
 
 	/**
@@ -52,7 +54,7 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link com.sinkanic.business.Boat#Boat(boolean, int, com.sinkanic.business.Cell)}.
+	 * Test method for {@link com.sinkanic.business.Ship#Boat(boolean, int, com.sinkanic.business.Cell)}.
 	 */
 	@Test
 	public final void testBoatBooleanIntCellule() {
@@ -60,16 +62,16 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link com.sinkanic.business.Boat#checkGuess(int, int)}.
+	 * Test method for {@link com.sinkanic.business.Ship#checkGuess(int, int)}.
 	 */
 	@Test
 	public final void testCheckGuess() {
-		assertEquals(boat.checkGuess(0, 0), Boat.HIT);
-		assertNotEquals(boat.checkGuess(9, 9), Boat.HIT);
+		assertEquals(boat.checkGuess(0, 0), Ship.HIT);
+		assertNotEquals(boat.checkGuess(9, 9), Ship.HIT);
 	}
 
 	/**
-	 * Test method for {@link com.sinkanic.business.Boat#isHit(int, int)}.
+	 * Test method for {@link com.sinkanic.business.Ship#isHit(int, int)}.
 	 */
 	@Test
 	public final void testIsTouched() {
@@ -78,7 +80,7 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link com.sinkanic.business.Boat#isSunk()}.
+	 * Test method for {@link com.sinkanic.business.Ship#isSunk()}.
 	 */
 	@Test
 	public final void testIsDestroyed() {

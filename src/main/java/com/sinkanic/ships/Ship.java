@@ -11,7 +11,7 @@ import com.sinkanic.business.Cell;
  * @author matthieumaunier
  *
  */
-public abstract class Ship {
+public class Ship {
 
 	public static final String MISSED = "Missed!";
 	public static final String DESTROYED = "Destroyed!";
@@ -91,9 +91,9 @@ public abstract class Ship {
 	}
 
 	/**
-	 * @return boolean détermine si l'ennemi est détruit ou non.
+	 * @return boolean tells if enemy is destroyed.
 	 */
-	protected boolean isSunk() {
+	public boolean isSunk() {
 		boolean result = true;
 		for (Cell cellule : shipCells) {
 			if (!cellule.isHit()) {
@@ -102,5 +102,25 @@ public abstract class Ship {
 			}
 		}
 		return result;
+	}
+
+	public String displayPositions() {
+		StringBuilder sb = new StringBuilder();
+		int compteur = 0;
+		sb.append("[");
+		for (Cell cell : getPositions()) {
+			compteur++;
+			sb.append("(" + cell.getHorizontalPosition() + "," + cell.getVerticalPosition() + ")");
+			if (compteur < getPositions().size()) {
+				sb.append(",");
+			}
+		}
+		sb.append("]");
+		return sb.toString();		
+	}
+
+	public int getShipSize()
+	{		
+		return (shipCells.size());
 	}
 }

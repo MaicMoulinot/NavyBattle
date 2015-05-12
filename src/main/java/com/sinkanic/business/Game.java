@@ -2,6 +2,8 @@ package com.sinkanic.business;
 
 import java.util.ArrayList;
 
+import com.sinkanic.ships.Ship;
+
 
 public class Game {
 	
@@ -70,7 +72,7 @@ public class Game {
 	public ArrayList<String> play() {
 		ArrayList<String> result = new ArrayList<String>();
 		try {
-			for (Boat boat : player1.getFlotte()) {
+			for (Ship boat : player1.getFlotte()) {
 				while (!boat.isSunk()) {
 					Cell tryPlayer = player1.getGuess(tailleGrilleHorizontal, tailleGrilleVertical);
 					int X = tryPlayer.getHorizontalPosition();
@@ -99,9 +101,9 @@ public class Game {
 	 * @param testX int the horizontal position to check
 	 * @param testY int the vertical position to check
 	 * @return a String the result 
-	 * @see com.sinkanic.business.Boat.MISSED
-	 * @see com.sinkanic.business.Boat.HIT
-	 * @see com.sinkanic.business.Boat.DESTROYED
+	 * @see com.sinkanic.business.Ship.MISSED
+	 * @see com.sinkanic.business.Ship.HIT
+	 * @see com.sinkanic.business.Ship.DESTROYED
 	 */
 	public String checkGuess(int testX, int testY) {
 		player1.incrementNbEssais();

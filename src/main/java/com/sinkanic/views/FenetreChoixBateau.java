@@ -21,9 +21,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-import com.sinkanic.business.Boat;
 import com.sinkanic.business.Cell;
 import com.sinkanic.business.Game;
+import com.sinkanic.ships.Ship;
 import com.sinkanic.views.components.JButtonChoixBateau;
 import com.sinkanic.views.components.JButtonGrille;
 
@@ -134,7 +134,7 @@ public class FenetreChoixBateau {
 
 		cbbTaille = new JComboBox<String>();
 		pnlOptions.add(cbbTaille);
-		cbbTaille.setModel(new DefaultComboBoxModel<String>(new String[] {Boat.PORTE_AVION, Boat.CROISEUR, Boat.TORPILLEUR, Boat.PLANCHE_A_VOILE}));
+		cbbTaille.setModel(new DefaultComboBoxModel<String>(new String[] {"Aircraft Carrier", "Battleship", "Submarine", "Cruiser", "Patrol boat"}));
 		pnlOptions.add(new JLabel());
 		
 		//grille		
@@ -232,11 +232,11 @@ public class FenetreChoixBateau {
 		JButtonChoixBateau btnBouton = new JButtonChoixBateau(x, y);
 		btnBouton.setName("Btn"+x+y);
 		btnBouton.addMouseListener(new MouseListener() {
-			private Boat bateau = null;
+			private Ship bateau = null;
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Boat bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), Boat.getTailleBateau(cbbTaille.getSelectedItem().toString()), rdbtnVertical.isSelected(), x, y);
+				Ship bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 5/*Ship.getTailleBateau(cbbTaille.getSelectedItem().toString())*/, rdbtnVertical.isSelected(), x, y);
 				if (bateaucree != null) {
 					txtResultat.setText("Ton bateau est placé");
 					setColorBateauChosen(bateaucree);
@@ -277,8 +277,8 @@ public class FenetreChoixBateau {
 				}
 			}
 			
-			private Boat tryBoat() {
-				return bateau = partie.getPlayer1().tryBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), Boat.getTailleBateau(cbbTaille.getSelectedItem().toString()), rdbtnVertical.isSelected(), x, y);
+			private Ship tryBoat() {
+				return bateau = partie.getPlayer1().tryBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 5/*Ship.getTailleBateau(cbbTaille.getSelectedItem().toString())*/, rdbtnVertical.isSelected(), x, y);
 			}
 			
 		});
@@ -296,21 +296,21 @@ public class FenetreChoixBateau {
 		}
 	}
 	
-	private void setColorBateauChosen(Boat bateau) {
+	private void setColorBateauChosen(Ship bateau) {
 		for (Cell cellule : bateau.getPositions()) {
 			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.getHorizontalPosition(), cellule.getVerticalPosition()));
 			bouton.setColorPlaced();
 		}
 	}
 	
-	private void setColorBateauOnMouseOver(Boat bateau) {
+	private void setColorBateauOnMouseOver(Ship bateau) {
 		for (Cell cellule : bateau.getPositions()) {
 			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.getHorizontalPosition(), cellule.getVerticalPosition()));
 			bouton.setColorOnMouseOver();
 		}
 	}
 	
-	private void setColorUnplaced(Boat bateau) {
+	private void setColorUnplaced(Ship bateau) {
 		for (Cell cellule : bateau.getPositions()) {
 			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.getHorizontalPosition(), cellule.getVerticalPosition()));
 			if (!bouton.isPlaced()) {

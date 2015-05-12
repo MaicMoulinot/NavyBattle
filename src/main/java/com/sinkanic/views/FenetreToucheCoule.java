@@ -19,8 +19,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-import com.sinkanic.business.Boat;
 import com.sinkanic.business.Game;
+import com.sinkanic.ships.Ship;
 import com.sinkanic.views.components.JButtonGrille;
 import com.sinkanic.views.components.JButtonToucheCoule;
 
@@ -45,8 +45,8 @@ public class FenetreToucheCoule {
 		txtName = name;
 		txtDifficulte = niveau;
 		partie = game;
-		for (Boat bateau : partie.getPlayer1().getFlotte()) {
-			partie.addBoatRandomPlayer2(bateau.getTaille());
+		for (Ship bateau : partie.getPlayer1().getFlotte()) {
+			partie.addBoatRandomPlayer2(bateau.getShipSize());
 		}
 		initialize();
 	}
@@ -185,11 +185,11 @@ public class FenetreToucheCoule {
 				if (!partie.getPlayer1().isDead() && !partie.getPlayer2().isDead()) {
 					btnBouton.setPlayed();
 					switch (partie.checkGuess(x, y)) {
-					case Boat.MISSED:
+					case Ship.MISSED:
 						txtResultat.setText("Loupé " + txtName + ", essaye encore !!");
 						btnBouton.setColorMissed();
 						break;
-					case Boat.DESTROYED:
+					case Ship.DESTROYED:
 						btnBouton.setColorHit();
 						if (partie.getPlayer2().isDead()) {
 							txtResultat.setText("Victoire en " + partie.getPlayer1().getNbEssais() + " coups "+ txtName + ", la classe !! Tu veux rejouer?");
@@ -198,7 +198,7 @@ public class FenetreToucheCoule {
 							txtResultat.setText("Bravo tu as coulé un bateau " + txtName + ", continue !!");
 						}
 						break;
-					case Boat.HIT:
+					case Ship.HIT:
 						btnBouton.setColorHit();
 						txtResultat.setText("Bravo tu as touché " + txtName + ", continue !!");
 						break;

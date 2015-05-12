@@ -3,6 +3,8 @@ package com.sinkanic.business;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.sinkanic.ships.Ship;
+
 /**
  * 
  */
@@ -13,7 +15,7 @@ import java.util.Random;
  */
 public abstract class Player {
 
-	protected ArrayList<Boat> listBoats;
+	protected ArrayList<Ship> listBoats;
 
 	/**
 	 * Nombre de fois où le joueur a tiré.
@@ -28,7 +30,7 @@ public abstract class Player {
 	}
 
 	public Player() {
-		listBoats = new ArrayList<Boat>();
+		listBoats = new ArrayList<Ship>();
 		nbTries = 0;
 	}
 
@@ -51,7 +53,7 @@ public abstract class Player {
 		int X = 0;
 		int Y = 0;
 		Random randomGenerator = new Random();
-		Boat bateau = null;
+		Ship bateau = null;
 		do {
 			if(isVertical) {
 				X = randomGenerator.nextInt(tailleGrilleHorizontal);
@@ -64,7 +66,7 @@ public abstract class Player {
 					X = randomGenerator.nextInt(tailleGrilleHorizontal - tailleBateau);
 				}
 			}
-			bateau = new Boat(isVertical, tailleBateau, new Cell(X, Y));
+			bateau = new Ship(tailleBateau, X, Y, isVertical);
 		} while (!isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical));
 		listBoats.add(bateau);
 	}
@@ -73,15 +75,15 @@ public abstract class Player {
 	 * @param testX int the horizontal position to check
 	 * @param testY int the vertical position to check
 	 * @return a String the result 
-	 * @see com.sinkanic.business.Boat.MISSED
-	 * @see com.sinkanic.business.Boat.HIT
-	 * @see com.sinkanic.business.Boat.DESTROYED
+	 * @see com.sinkanic.business.Ship.MISSED
+	 * @see com.sinkanic.business.Ship.HIT
+	 * @see com.sinkanic.business.Ship.DESTROYED
 	 */
 	public String checkGuess(int testX, int testY) {
-		String resultat = Boat.MISSED;
-		for (Boat bateau : getFlotte()) {
+		String resultat = Ship.MISSED;
+		for (Ship bateau : getFlotte()) {
 			resultat = bateau.checkGuess(testX, testY);
-			if (!resultat.matches(Boat.MISSED)) {
+			if (!resultat.matches(Ship.MISSED)) {
 				break;
 			}
 		}
@@ -90,7 +92,7 @@ public abstract class Player {
 	
 	public ArrayList<Cell> getAllPositions() {
 		ArrayList<Cell> listeCellules = new ArrayList<Cell>();
-		for (Boat bateau : getFlotte()) {
+		for (Ship bateau : getFlotte()) {
 			for (Cell cellule : bateau.getPositions()) {
 				listeCellules.add(cellule);
 			}
@@ -98,19 +100,19 @@ public abstract class Player {
 		return listeCellules;
 	}
 
-	public ArrayList<Boat> getFlotte() {
+	public ArrayList<Ship> getFlotte() {
 		return listBoats;
 	}
 	
 	public ArrayList<String> afficheBoats() {
 		ArrayList<String> resultat = new ArrayList<String>();
-		for (Boat bateau : getFlotte()) {
-			resultat.add(bateau.affichePositions());
+		for (Ship bateau : getFlotte()) {
+			resultat.add(bateau.displayPositions());
 		}
 		return resultat;
 	}
 
-	private boolean isBoatIntegre(Boat nouveauBateau, int tailleGrilleHorizontal, int tailleGrilleVertical) {
+	private boolean isBoatIntegre(Ship nouveauBateau, int tailleGrilleHorizontal, int tailleGrilleVertical) {
 		boolean resultat = true;
 		for (Cell testCellule : nouveauBateau.getPositions()) {
 			if (testCellule.getHorizontalPosition() >= tailleGrilleHorizontal || testCellule.getVerticalPosition() >= tailleGrilleVertical) {
@@ -130,7 +132,7 @@ public abstract class Player {
 	
 	public boolean isDead() {
 		boolean resultat = true;
-		for (Boat bateau : getFlotte()) {
+		for (Ship bateau : getFlotte()) {
 			if (!bateau.isSunk()) {
 				resultat = false;
 				break;
@@ -139,8 +141,8 @@ public abstract class Player {
 		return resultat;
 	}
 
-	public Boat addBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
-		Boat bateau = new Boat(isVertical, tailleBateau, new Cell(firstCellX, firstCellY));
+	public Ship addBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
+		Ship bateau = new Ship(tailleBateau, firstCellX, firstCellY, isVertical);
 		if (isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
 			listBoats.add(bateau);
 		} else {
@@ -149,8 +151,8 @@ public abstract class Player {
 		return bateau;
 	}
 	
-	public Boat tryBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
-		Boat bateau = new Boat(isVertical, tailleBateau, new Cell(firstCellX, firstCellY));
+	public Ship tryBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
+		Ship bateau = new Ship(tailleBateau, firstCellX, firstCellY, isVertical);
 		if (!isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
 			bateau = null;
 		}

@@ -53,10 +53,11 @@ public class Boat {
 	 * @param testX int the horizontal position to check
 	 * @param testY int the vertical position to check
 	 * @return a String the result 
-	 * @see com.sinkanic.business.Boat.MISSED
-	 * @see com.sinkanic.business.Boat.HIT
-	 * @see com.sinkanic.business.Boat.DESTROYED
+	 * @see com.sinkanic.business.Ship.MISSED
+	 * @see com.sinkanic.business.Ship.HIT
+	 * @see com.sinkanic.business.Ship.DESTROYED
 	 */
+	@Deprecated
 	public String checkGuess(int testX, int testY) {
 		String resultat = MISSED;
 		try {
@@ -77,6 +78,7 @@ public class Boat {
 	/**
 	 * @return ArrayList<{@link com.sinkanic.business.Cell}> the positions
 	 */
+	@Deprecated
 	public ArrayList<Cell> getPositions() {
 		return listeCellule;
 	}
@@ -84,6 +86,7 @@ public class Boat {
 	/**
 	 * @return true if the boat is hit on position (X, Y).
 	 */
+	@Deprecated
 	protected boolean isHit(int testX, int testY) {
 		boolean result = false;
 		for (Cell testCell : listeCellule) {
@@ -99,6 +102,7 @@ public class Boat {
 	/**
 	 * @return true if the boat is sunk.
 	 */
+	@Deprecated
 	protected boolean isSunk() {
 		boolean result = true;
 		for (Cell cellule : listeCellule) {
@@ -110,7 +114,8 @@ public class Boat {
 		return result;
 	}
 
-	public String affichePositions() {
+	@Deprecated
+	public String dislayPositions() {
 		StringBuilder resultat = new StringBuilder();
 		int compteur = 0;
 		resultat.append("[");
@@ -125,7 +130,8 @@ public class Boat {
 		return resultat.toString();
 	}
 	
-	public static int getTailleBateau(String typeBateau) {
+	@Deprecated
+	public static int getShipSize(String typeBateau) {
 		int taille = 0;
 		switch (typeBateau) {
 		case PORTE_AVION:
