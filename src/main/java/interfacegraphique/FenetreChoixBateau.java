@@ -28,7 +28,7 @@ import logic.NetBattle;
 
 public class FenetreChoixBateau {
 
-	private String txtName; //cill
+	private String txtName; //
 	private String txtDifficulte;
 	private JTextArea txtResultat;
 	private JPanel pnlGrilleJoueur;
