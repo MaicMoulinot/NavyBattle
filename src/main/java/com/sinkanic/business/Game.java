@@ -65,7 +65,7 @@ public class Game {
 	 * demande son prochain essai au joueur et demande à
 	 * l'ennemi d'indiquer s'il est touché. Quand l'ennemi est
 	 * mort, affiche le nombre d'essais utilisés puis quitte.
-	 * @return ArrayList<String> the result
+	 * @return the result a list of String
 	 * */
 	public ArrayList<String> play() {
 		ArrayList<String> result = new ArrayList<String>();
@@ -86,7 +86,7 @@ public class Game {
 	}
 
 	/**
-	 * @return cheat tips ArrayList<String>
+	 * @return cheat tips a list of String
 	 */
 	public ArrayList<String> afficheTriche() {
 		ArrayList<String> resultat = new ArrayList<String>();

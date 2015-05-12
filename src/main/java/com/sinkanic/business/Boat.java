@@ -75,13 +75,15 @@ public class Boat {
 	}
 	
 	/**
-	 * @return ArrayList<{@link com.sinkanic.business.Cell}> the positions
+	 * @return a list of positions {@link com.sinkanic.business.Cell}
 	 */
 	public ArrayList<Cell> getPositions() {
 		return listeCellule;
 	}
 	
 	/**
+	 * @param testX int the horizontal position to test
+	 * @param testY int the vertical position to test
 	 * @return true if the boat is hit on position (X, Y).
 	 */
 	protected boolean isHit(int testX, int testY) {
