@@ -32,14 +32,15 @@ public class Game {
 	/**
 	 * Launch a game.
 	 * @param difficulte a String the chosen level.
+	 * @param name a String the player's name
 	 */
-	public Game(String difficulte) {
+	public Game(String difficulte, String name) {
 		switch (difficulte) {
 		case BIDON:
 			// 1D 1 bateau de taille 3
 			tailleGrilleHorizontal = 7;
 			tailleGrilleVertical = 1;
-			player1 = new Player();
+			player1 = new Player(name);
 			player2 = new PlayerAI();
 			addRandomBoatOnPlayerAI(3);
 			break;
@@ -47,7 +48,7 @@ public class Game {
 			// 2D 1 bateau de taille 3
 			tailleGrilleHorizontal = 10;
 			tailleGrilleVertical = 10;
-			player1 = new Player();
+			player1 = new Player(name);
 			player2 = new PlayerAI();
 			addRandomBoatOnPlayerAI(3);
 			addRandomBoatOnPlayerAI(3);
@@ -56,7 +57,7 @@ public class Game {
 			// 2D flotte de 2 bateaux de taille 3, 2 bateau de taille 2, 1 bateau de taille 1
 			tailleGrilleHorizontal = 10;
 			tailleGrilleVertical = 10;
-			player1 = new Player();
+			player1 = new Player(name);
 			player2 = new PlayerAI();
 			break;
 		}
@@ -74,10 +75,10 @@ public class Game {
 		try {
 			for (Ship boat : player2.getFlotte()) {
 				while (!boat.isSunk()) {
-					Cell tryPlayer = ((PlayerAI) player2).getGuess(tailleGrilleHorizontal, tailleGrilleVertical);
+					Cell tryPlayer = ((PlayerAI) player2).getRandomCell(tailleGrilleHorizontal, tailleGrilleVertical);
 					int X = tryPlayer.getHorizontalPosition();
 					int Y = tryPlayer.getVerticalPosition();
-					result.add("Essai du joueur sur (" + X + "," + Y + "): " + checkGuess(X, Y));
+					result.add("Essai du joueur sur (" + X + "," + Y + "): " + checkGuess(player1, player2, X, Y));
 				}
 			}
 			result.add("Partie terminée en " + player1.getNbEssais() + " essais.");
@@ -98,6 +99,8 @@ public class Game {
 	}
 
 	/**
+	 * @param playing the Player trying to hit a boat from the checked's player fleet
+	 * @param checked the Player beeing checked
 	 * @param testX int the horizontal position to check
 	 * @param testY int the vertical position to check
 	 * @return a String the result 
@@ -105,9 +108,9 @@ public class Game {
 	 * @see com.sinkanic.business.Ship.HIT
 	 * @see com.sinkanic.business.Ship.DESTROYED
 	 */
-	public String checkGuess(int testX, int testY) {
-		player1.incrementNbEssais();
-		return player2.checkGuess(testX, testY);
+	public String checkGuess(Player playing, Player checked, int testX, int testY) {
+		playing.incrementNbEssais();
+		return checked.checkGuess(testX, testY);
 	}
 
 	public Player getPlayer1() {

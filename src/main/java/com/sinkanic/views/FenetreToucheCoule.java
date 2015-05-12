@@ -19,7 +19,9 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+import com.sinkanic.business.Cell;
 import com.sinkanic.business.Game;
+import com.sinkanic.business.PlayerAI;
 import com.sinkanic.ships.Ship;
 import com.sinkanic.views.components.JButtonGrille;
 import com.sinkanic.views.components.JButtonToucheCoule;
@@ -31,11 +33,11 @@ public class FenetreToucheCoule {
 	private JTextArea txtResultat;
 	private JFrame frmGrille;
 	private Game partie;
-	
+
 	protected JFrame getFrame() {
 		return frmGrille;
 	}
-	
+
 	/**
 	 * @param name a String 
 	 * @param niveau a String 
@@ -75,7 +77,7 @@ public class FenetreToucheCoule {
 		gbc_lblInit.gridx = 2;
 		gbc_lblInit.gridy = 1;
 		frmGrille.getContentPane().add(lblInit, gbc_lblInit);
-		
+
 		JPanel pnlTriche = new JPanel();
 		pnlTriche.setBackground(new Color(124, 252, 0));
 		GridLayout grdTriche = new GridLayout();
@@ -107,7 +109,7 @@ public class FenetreToucheCoule {
 		gbc_pnlGrilleJoueur.gridy = 3;
 		gbc_pnlGrilleJoueur.gridx = 1;
 		frmGrille.getContentPane().add(pnlGrilleJoueur, gbc_pnlGrilleJoueur);
-		
+
 		txtResultat = new JTextArea();
 		txtResultat.setFont(new Font("Tahoma", Font.BOLD, 16));
 		txtResultat.setEditable(false);
@@ -116,7 +118,7 @@ public class FenetreToucheCoule {
 		gbc_txtResultat.gridx = 2;
 		gbc_txtResultat.gridy = 5;
 		frmGrille.getContentPane().add(txtResultat, gbc_txtResultat);
-		
+
 		JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
 		separator.setSize(100, 100);
 		GridBagConstraints gbc_separator = new GridBagConstraints();
@@ -125,7 +127,7 @@ public class FenetreToucheCoule {
 		gbc_separator.gridx = 0;
 		gbc_separator.gridy = 7;
 		frmGrille.getContentPane().add(separator, gbc_separator);
-		
+
 		JButton btnNouvelle = new JButton();
 		btnNouvelle.setToolTipText("Démarrer une nouvelle partie");
 		btnNouvelle.setText("Nouvelle partie");
@@ -177,43 +179,68 @@ public class FenetreToucheCoule {
 		JButtonToucheCoule btnBouton = new JButtonToucheCoule(x, y);
 		btnBouton.setName("Btn"+x+y);
 		btnBouton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				boolean isGameFinished = false;
 				if (!partie.getPlayer1().isDead() && !partie.getPlayer2().isDead()) {
+					StringBuilder resultat = new StringBuilder();
 					btnBouton.setPlayed();
-					switch (partie.checkGuess(x, y)) {
+					// player1 plays
+					switch (partie.checkGuess(partie.getPlayer1(), partie.getPlayer2(), x, y)) {
 					case Ship.MISSED:
-						txtResultat.setText("Loupé " + txtName + ", essaye encore !!");
+						resultat.append("Coup de " + partie.getPlayer1().getName() + ": loupé, essaye encore !!");
 						btnBouton.setColorMissed();
 						break;
 					case Ship.DESTROYED:
 						btnBouton.setColorHit();
 						if (partie.getPlayer2().isDead()) {
-							txtResultat.setText("Victoire en " + partie.getPlayer1().getNbEssais() + " coups "+ txtName + ", la classe !! Tu veux rejouer?");
+							isGameFinished = true;
+							resultat.append("Victoire en " + partie.getPlayer1().getNbEssais() + " coups "+ partie.getPlayer1().getName() + ", la classe !! Tu veux rejouer?");
 							txtResultat.setBackground(new Color(255, 127, 80));
 						} else {
-							txtResultat.setText("Bravo tu as coulé un bateau " + txtName + ", continue !!");
+							resultat.append("Coup de " + partie.getPlayer1().getName() + ": bravo t'as coulé un bateau, continue !!");
 						}
 						break;
 					case Ship.HIT:
 						btnBouton.setColorHit();
-						txtResultat.setText("Bravo tu as touché " + txtName + ", continue !!");
+						resultat.append("Coup de " + partie.getPlayer1().getName() + ": t'as touché, continue !!");
 						break;
 					}
+					// player2 plays
+					if (!isGameFinished) {
+						Cell randomCell = ((PlayerAI) partie.getPlayer2()).getRandomCell(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical());
+						switch (partie.checkGuess(partie.getPlayer2(), partie.getPlayer1(), randomCell.getHorizontalPosition(), randomCell.getVerticalPosition())) {
+						case Ship.MISSED:
+							resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": aucun de tes bateaux n'a été touché, " + partie.getPlayer1().getName() + ", yeah !!");
+							break;
+						case Ship.DESTROYED:
+							if (partie.getPlayer1().isDead()) {
+								resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": Tu as perdu en " + partie.getPlayer2().getNbEssais() + " coups "+ txtName + ", t'es mauvais. Tu veux rejouer?");
+								txtResultat.setBackground(new Color(255, 127, 80));
+							} else {
+								resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": Un de tes bateaux vient de couler, " + partie.getPlayer1().getName());
+							}
+							break;
+						case Ship.HIT:
+							resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": Un de tes bateaux vient d'être touché, " + partie.getPlayer1().getName());
+							break;
+						}
+					}
+					txtResultat.setText(resultat.toString());
 				}
 			}
 		});
 		return btnBouton;
 	}
-	
+
 	private JLabel addLabel(String label) {
 		JLabel retour = new JLabel(label);
 		retour.setFont(new Font("Tahoma", Font.ITALIC, 10));
 		retour.setHorizontalAlignment(SwingConstants.LEFT);
 		return retour;
 	}
-	
+
 	private void setSize() {
 		switch (txtDifficulte) {
 		case Game.BIDON:

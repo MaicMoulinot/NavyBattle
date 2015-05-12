@@ -3,6 +3,7 @@
  */
 package com.sinkanic.business;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.sinkanic.ships.AircraftCarrier;
@@ -17,8 +18,14 @@ import com.sinkanic.ships.Submarine;
  */
 public class PlayerAI extends Player {
 	
-	public Cell getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical) {
-		nbTries++;
+	public PlayerAI() {
+		super("AI");
+		fleet = new ArrayList<Ship>();
+		nbTries = 0;
+	}
+	
+	public Cell getRandomCell(int tailleGrilleHorizontal, int tailleGrilleVertical) {
+		incrementNbEssais();
 		Random randomGenerator = new Random();
 	    int randomHorizontal = randomGenerator.nextInt(tailleGrilleHorizontal-1);
 	    int randomVertical = 0;
@@ -26,11 +33,6 @@ public class PlayerAI extends Player {
 	    	randomVertical = randomGenerator.nextInt(tailleGrilleVertical-1);
 	    }
 	    Cell guessedCell = new Cell(randomHorizontal, randomVertical);
-		return guessedCell;
-	}
-
-//	public Cell getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical) {
-//		nbTries++;
 //		int X = 0;
 //		int Y = 0;
 //		int line = 0;
@@ -44,8 +46,8 @@ public class PlayerAI extends Player {
 //			}
 //		}
 //		Cell guessedCell = new Cell(X, Y);
-//		return guessedCell;
-//	}
+		return guessedCell;
+	}
 	
 	public void createRandomBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau) {
 		Random randomGenerator = new Random();

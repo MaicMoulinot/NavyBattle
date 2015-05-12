@@ -63,7 +63,7 @@ public class FenetrePartie {
 		gbc_separator.gridy = 0;
 		frmPartie.getContentPane().add(separator, gbc_separator);
 
-		Game partie = new Game(txtDifficulte);
+		Game partie = new Game(txtDifficulte, txtName);
 		JLabel lblInit = new JLabel("Démarrage d'une partie de niveau " + txtDifficulte);
 		lblInit.setHorizontalAlignment(SwingConstants.LEFT);
 		GridBagConstraints gbc_lblInit = new GridBagConstraints();
