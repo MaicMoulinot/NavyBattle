@@ -24,7 +24,6 @@ import javax.swing.SwingConstants;
 import com.sinkanic.business.Boat;
 import com.sinkanic.business.Cellule;
 import com.sinkanic.business.Game;
-import com.sinkanic.business.NetBattle;
 import com.sinkanic.views.components.JButtonChoixBateau;
 import com.sinkanic.views.components.JButtonGrille;
 
@@ -69,7 +68,7 @@ public class FenetreChoixBateau {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frmGrille.getContentPane().setLayout(gridBagLayout);
 
-		partie = NetBattle.startGame(txtDifficulte);
+		partie = new Game(txtDifficulte);
 
 		// Titre
 		JTextArea txtTitre = new JTextArea("Début de la partie : place ta flotte !!");
