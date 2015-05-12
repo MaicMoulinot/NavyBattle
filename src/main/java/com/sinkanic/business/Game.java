@@ -20,6 +20,8 @@ public class Game {
 	 * Taille verticale d'une grille.
 	 */
 	private int tailleGrilleVertical;
+	
+	private String level;
 
 	/**
 	 * Joueur.
@@ -35,7 +37,8 @@ public class Game {
 	 * @param name a String the player's name
 	 */
 	public Game(String difficulte, String name) {
-		switch (difficulte) {
+		level = difficulte;
+		switch (level) {
 		case BIDON:
 			// 1D 1 bateau de taille 3
 			tailleGrilleHorizontal = 7;
@@ -143,5 +146,9 @@ public class Game {
 
 	private void addRandomBoatOnPlayerAI(int taille) {
 		player2.createRandomBoat(tailleGrilleHorizontal, tailleGrilleVertical, taille);
+	}
+
+	public String getLevel() {
+		return level;
 	}
 }

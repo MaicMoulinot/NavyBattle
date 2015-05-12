@@ -28,8 +28,6 @@ import com.sinkanic.views.components.JButtonToucheCoule;
 
 public class FenetreToucheCoule {
 
-	private String txtName;
-	private String txtDifficulte;
 	private JTextArea txtResultat;
 	private JFrame frmGrille;
 	private Game partie;
@@ -39,13 +37,9 @@ public class FenetreToucheCoule {
 	}
 
 	/**
-	 * @param name a String 
-	 * @param niveau a String 
 	 * @param game a com.sinkanic.business.Game
 	 */
-	public FenetreToucheCoule(String name, String niveau, Game game) {
-		txtName = name;
-		txtDifficulte = niveau;
+	public FenetreToucheCoule(Game game) {
 		partie = game;
 		partie.setFleetAI();
 		initialize();
@@ -57,7 +51,7 @@ public class FenetreToucheCoule {
 	private void initialize() {
 		frmGrille = null;
 		frmGrille = new JFrame();
-		frmGrille.setTitle("Joueur " + txtName + " - Niveau " + txtDifficulte);
+		frmGrille.setTitle("Joueur " + partie.getPlayer1().getName() + " - Niveau " + partie.getLevel());
 		setSize();
 		frmGrille.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGrille.getContentPane().setBackground(new Color(0, 206, 209));
@@ -68,7 +62,7 @@ public class FenetreToucheCoule {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frmGrille.getContentPane().setLayout(gridBagLayout);
 
-		JTextArea lblInit = new JTextArea("Bataille navale en mode " + txtDifficulte);
+		JTextArea lblInit = new JTextArea("Bataille navale en mode " + partie.getLevel());
 		lblInit.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblInit.setBackground(new Color(124, 252, 0));
 		GridBagConstraints gbc_lblInit = new GridBagConstraints();
@@ -136,7 +130,7 @@ public class FenetreToucheCoule {
 			public void mouseClicked(MouseEvent e) {
 				frmGrille.setVisible(false);
 				frmGrille.dispose();
-				FenetreChoixBateau newPartie = new FenetreChoixBateau(txtName, txtDifficulte);
+				FenetreChoixBateau newPartie = new FenetreChoixBateau(partie.getPlayer1().getName(), partie.getLevel());
 				newPartie.getFrame().setVisible(true);
 			}
 		});
@@ -212,11 +206,11 @@ public class FenetreToucheCoule {
 						Cell randomCell = ((PlayerAI) partie.getPlayer2()).getRandomCell(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical());
 						switch (partie.checkGuess(partie.getPlayer2(), partie.getPlayer1(), randomCell.getHorizontalPosition(), randomCell.getVerticalPosition())) {
 						case Ship.MISSED:
-							resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": aucun de tes bateaux n'a été touché, " + partie.getPlayer1().getName() + ", yeah !!");
+							resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": aucun de tes bateaux n'a été touché, yeah !!");
 							break;
 						case Ship.DESTROYED:
 							if (partie.getPlayer1().isDead()) {
-								resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": Tu as perdu en " + partie.getPlayer2().getNbEssais() + " coups "+ txtName + ", t'es mauvais. Tu veux rejouer?");
+								resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": Tu as perdu en " + partie.getPlayer2().getNbEssais() + " coups "+ partie.getPlayer1().getName() + ", t'es mauvais. Tu veux rejouer?");
 								txtResultat.setBackground(new Color(255, 127, 80));
 							} else {
 								resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": Un de tes bateaux vient de couler, " + partie.getPlayer1().getName());
@@ -242,7 +236,7 @@ public class FenetreToucheCoule {
 	}
 
 	private void setSize() {
-		switch (txtDifficulte) {
+		switch (partie.getLevel()) {
 		case Game.BIDON:
 			frmGrille.setBounds(50, 50, 500, 250);
 			break;
