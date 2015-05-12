@@ -10,10 +10,7 @@ package com.sinkanic.business;
  *
  */
 public class PlayerCroissant extends Player {
-
-	/**
-	 * @return <Cellule> la prochaine tentative du joueur
-	 */
+	
 	public Cell getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical) {
 		nbTries++;
 		int X = 0;

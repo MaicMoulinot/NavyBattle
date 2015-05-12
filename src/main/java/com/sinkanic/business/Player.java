@@ -32,9 +32,6 @@ public abstract class Player {
 		nbTries = 0;
 	}
 
-	/**
-	 * @return la prochaine tentative du joueur
-	 */
 	public abstract Cell getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical);
 	//	1ère solution : renvoit les valeurs de 0 à 6 dans l'ordre
 	//	2ème solution : renvoit des tirages aléatoires
@@ -55,7 +52,6 @@ public abstract class Player {
 		int Y = 0;
 		Random randomGenerator = new Random();
 		Boat bateau = null;
-		//TODO attention aux marges
 		do {
 			if(isVertical) {
 				X = randomGenerator.nextInt(tailleGrilleHorizontal);
@@ -74,7 +70,12 @@ public abstract class Player {
 	}
 
 	/**
-	 * @see Boat.checkGuess()
+	 * @param testX int the horizontal position to check
+	 * @param testY int the vertical position to check
+	 * @return a String the result 
+	 * @see com.sinkanic.business.Boat.MISSED
+	 * @see com.sinkanic.business.Boat.HIT
+	 * @see com.sinkanic.business.Boat.DESTROYED
 	 */
 	public String checkGuess(int testX, int testY) {
 		String resultat = Boat.MISSED;
@@ -86,10 +87,7 @@ public abstract class Player {
 		}
 		return resultat;
 	}
-
-	/**
-	 * @return ArrayList<Cellule> la liste de toutes les cellules de la flotte du joueur.
-	 */
+	
 	public ArrayList<Cell> getAllPositions() {
 		ArrayList<Cell> listeCellules = new ArrayList<Cell>();
 		for (Boat bateau : getFlotte()) {

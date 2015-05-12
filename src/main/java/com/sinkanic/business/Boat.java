@@ -23,20 +23,11 @@ public class Boat {
 	 */
 	private ArrayList<Cell> listeCellule;
 	
-	// Constructeurs
 	/**
-	 * Constructeur
-	 * @param <Cell> la première position
-	 */
-	public Boat(Cell premierePosition) {
-		this(false, 1, premierePosition);
-	}
-	
-	/**
-	 * Constructeur
-	 * @param boolean est vertical
-	 * @param taille nombre de cellule
-	 * @param <Cell> la première position
+	 * Constructor
+	 * @param vertical boolean true if the Boat is vertical
+	 * @param taille number of Cells
+	 * @param premierePosition {@link com.sinkanic.business.Cell} the first Cell
 	 */
 	public Boat(boolean vertical, int taille, Cell premierePosition) {
 		isVertical = vertical;
@@ -59,7 +50,12 @@ public class Boat {
 
 	// Méthodes
 	/**
-	 * @see Player.checkGuess()
+	 * @param testX int the horizontal position to check
+	 * @param testY int the vertical position to check
+	 * @return a String the result 
+	 * @see com.sinkanic.business.Boat.MISSED
+	 * @see com.sinkanic.business.Boat.HIT
+	 * @see com.sinkanic.business.Boat.DESTROYED
 	 */
 	public String checkGuess(int testX, int testY) {
 		String resultat = MISSED;
@@ -79,12 +75,15 @@ public class Boat {
 	}
 	
 	/**
-	 * @return ArrayList<Cellule> la liste des positions
+	 * @return ArrayList<{@link com.sinkanic.business.Cell}> the positions
 	 */
 	public ArrayList<Cell> getPositions() {
 		return listeCellule;
 	}
 	
+	/**
+	 * @return true if the boat is hit on position (X, Y).
+	 */
 	protected boolean isHit(int testX, int testY) {
 		boolean result = false;
 		for (Cell testCell : listeCellule) {
@@ -98,7 +97,7 @@ public class Boat {
 	}
 
 	/**
-	 * @return boolean détermine si l'ennemi est détruit ou non.
+	 * @return true if the boat is sunk.
 	 */
 	protected boolean isSunk() {
 		boolean result = true;
@@ -126,10 +125,6 @@ public class Boat {
 		return resultat.toString();
 	}
 	
-	/**
-	 * @param <String> typeBateau
-	 * @return <Integer> la taille du bateau
-	 */
 	public static int getTailleBateau(String typeBateau) {
 		int taille = 0;
 		switch (typeBateau) {
@@ -149,9 +144,6 @@ public class Boat {
 		return taille;
 	}
 
-	/**
-	 * @return the nbCellule
-	 */
 	public int getTaille() {
 		return nbCellule;
 	}
