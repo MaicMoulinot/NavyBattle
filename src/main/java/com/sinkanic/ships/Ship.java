@@ -20,9 +20,9 @@ public abstract class Ship {
 	/**
 	 * Ship Constructor
 	 * @param size Ship size in <Cell> determined by other ship
-	 * @param gridX Ship origin grid column
-	 * @param gridY Ship origin grid row
-	 * @param vertical signals ship orientation
+	 * @param x int the horizontal position of the first cell
+	 * @param y int the vertical position of the first cell
+	 * @param direction boolean true if the boat is vertical
 	 */
 	public Ship(int size, int gridX, int gridY, boolean vertical) {
 		// Set ship orientation
