@@ -73,7 +73,7 @@ public class FenetreChoixBateau {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frmGrille.getContentPane().setLayout(gridBagLayout);
 
-		partie = new Game(txtDifficulte);
+		partie = new Game(txtDifficulte, txtName);
 
 		// Titre
 		JTextArea txtTitre = new JTextArea("Début de la partie : place ta flotte !!");

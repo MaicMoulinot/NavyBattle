@@ -17,6 +17,8 @@ import com.sinkanic.ships.Submarine;
  *
  */
 public class Player {
+	
+	protected String name;
 
 	protected ArrayList<Ship> fleet;
 
@@ -32,7 +34,8 @@ public class Player {
 		return nbTries;
 	}
 
-	public Player() {
+	public Player(String namePlayer) {
+		name = namePlayer;
 		fleet = new ArrayList<Ship>();
 		nbTries = 0;
 	}
@@ -168,5 +171,9 @@ public class Player {
 			bateau = null;
 		}
 		return bateau;
+	}
+
+	public String getName() {
+		return name;
 	}
 }
