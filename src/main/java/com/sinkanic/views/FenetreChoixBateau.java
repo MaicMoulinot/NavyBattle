@@ -23,7 +23,11 @@ import javax.swing.SwingConstants;
 
 import com.sinkanic.business.Cell;
 import com.sinkanic.business.Game;
+import com.sinkanic.ships.AircraftCarrier;
+import com.sinkanic.ships.Battleship;
+import com.sinkanic.ships.PatrolBoat;
 import com.sinkanic.ships.Ship;
+import com.sinkanic.ships.Submarine;
 import com.sinkanic.views.components.JButtonChoixBateau;
 import com.sinkanic.views.components.JButtonGrille;
 
@@ -134,7 +138,7 @@ public class FenetreChoixBateau {
 
 		cbbTaille = new JComboBox<String>();
 		pnlOptions.add(cbbTaille);
-		cbbTaille.setModel(new DefaultComboBoxModel<String>(new String[] {"Aircraft Carrier", "Battleship", "Submarine", "Cruiser", "Patrol boat"}));
+		cbbTaille.setModel(new DefaultComboBoxModel<String>(new String[] {"Aircraft Carrier", "Battleship", "Submarine", "Patrol boat"}));
 		pnlOptions.add(new JLabel());
 		
 		//grille		
@@ -231,34 +235,43 @@ public class FenetreChoixBateau {
 	private JButtonGrille addJButton(int x, int y) {
 		JButtonChoixBateau btnBouton = new JButtonChoixBateau(x, y);
 		btnBouton.setName("Btn"+x+y);
+
 		btnBouton.addMouseListener(new MouseListener() {
 			private Ship bateau = null;
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Ship bateaucree = null;
+				boolean bateaucree = false;
+				Ship shipToAdd = null;
 
 				switch (cbbTaille.getSelectedIndex()) {
 				case 0:
-					bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 5, rdbtnVertical.isSelected(), x, y);
+					shipToAdd = new AircraftCarrier(x, y, rdbtnVertical.isSelected());
+
+					break;
+				case 1:
+					shipToAdd = new Battleship(x, y, rdbtnVertical.isSelected());
+
 					break;
 				case 2:
-					bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 4, rdbtnVertical.isSelected(), x, y);
+					shipToAdd = new Submarine(x, y, rdbtnVertical.isSelected());
 					break;
 				case 3:
-					bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 3, rdbtnVertical.isSelected(), x, y);
-					break;
-				case 4:
-					bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 2, rdbtnVertical.isSelected(), x, y);
+					shipToAdd = new PatrolBoat(x, y, rdbtnVertical.isSelected());
 					break;
 
 				default:
 					break;
 				}
 				
-				if (bateaucree != null) {
+				bateaucree = partie.getPlayer1().addBoatX(shipToAdd, 
+						partie.getTailleGrilleHorizontal(), 
+						partie.getTailleGrilleVertical(), 
+						rdbtnVertical.isSelected(), x, y);	
+				
+				if (bateaucree != false) {
 					txtResultat.setText("Ton bateau est placé");
-					setColorBateauChosen(bateaucree);
+					setColorBateauChosen(shipToAdd);
 				} else {
 					txtResultat.setText("");
 				}
