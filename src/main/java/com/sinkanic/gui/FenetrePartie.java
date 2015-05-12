@@ -14,6 +14,8 @@ import javax.swing.SwingConstants;
 
 import com.sinkanic.business.Game;
 import com.sinkanic.business.NetBattle;
+import com.sinkanic.gui.components.JButtonDemarrer;
+import com.sinkanic.gui.components.JButtonQuitter;
 
 import java.awt.Font;
 import java.awt.TextArea;

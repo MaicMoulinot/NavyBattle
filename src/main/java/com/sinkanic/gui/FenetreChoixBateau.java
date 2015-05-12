@@ -25,10 +25,12 @@ import com.sinkanic.business.Boat;
 import com.sinkanic.business.Cellule;
 import com.sinkanic.business.Game;
 import com.sinkanic.business.NetBattle;
+import com.sinkanic.gui.components.JButtonChoixBateau;
+import com.sinkanic.gui.components.JButtonGrille;
 
 public class FenetreChoixBateau {
 
-	private String txtName; //cill
+	private String txtName;
 	private String txtDifficulte;
 	private JTextArea txtResultat;
 	private JPanel pnlGrilleJoueur;

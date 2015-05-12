@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sinkanic.gui;
+package com.sinkanic.gui.components;
 
 import javax.swing.JButton;
 

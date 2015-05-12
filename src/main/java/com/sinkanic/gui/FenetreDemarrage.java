@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.sinkanic.business.Game;
+import com.sinkanic.gui.components.JButtonDemarrer;
+import com.sinkanic.gui.components.JButtonQuitter;
 
 public class FenetreDemarrage {
 

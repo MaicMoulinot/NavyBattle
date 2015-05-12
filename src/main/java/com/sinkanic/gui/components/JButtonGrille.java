@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sinkanic.gui;
+package com.sinkanic.gui.components;
 
 import java.awt.Color;
 
@@ -38,6 +38,7 @@ public abstract class JButtonGrille extends JButton {
 		setSize(50, 50);
 		setText(positionX + "," + positionY);
 		setColorUnplayed();
+		setOpaque(true);
 	}
 	
 	public void setPlayed() {
@@ -72,15 +73,15 @@ public abstract class JButtonGrille extends JButton {
 		setBackground(COULEUR_PLACED);
 	}
 
-	protected boolean isPlayed() {
+	public boolean isPlayed() {
 		return isPlayed;
 	}
 	
-	protected boolean isPlaced() {
+	public boolean isPlaced() {
 		return isPlaced;
 	}
 	
-	protected boolean isHit() {
+	public boolean isHit() {
 		return isHit;
 	}
 }
