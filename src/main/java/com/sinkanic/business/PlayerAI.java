@@ -86,6 +86,6 @@ public class PlayerAI extends Player {
 				break;
 			}
 		} while (!isBoatAddable(bateau, tailleGrilleHorizontal, tailleGrilleVertical));
-		listBoats.add(bateau);
+		fleet.add(bateau);
 	}
 }

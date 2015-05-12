@@ -18,7 +18,7 @@ import com.sinkanic.ships.Submarine;
  */
 public class Player {
 
-	protected ArrayList<Ship> listBoats;
+	protected ArrayList<Ship> fleet;
 
 	/**
 	 * Nombre de fois où le joueur a tiré.
@@ -33,7 +33,7 @@ public class Player {
 	}
 
 	public Player() {
-		listBoats = new ArrayList<Ship>();
+		fleet = new ArrayList<Ship>();
 		nbTries = 0;
 	}
 
@@ -71,7 +71,7 @@ public class Player {
 	}
 
 	public ArrayList<Ship> getFlotte() {
-		return listBoats;
+		return fleet;
 	}
 	
 	public ArrayList<String> afficheBoats() {
@@ -113,7 +113,7 @@ public class Player {
 	public boolean addBoatX(Ship shipToAdd, int gridCols, int gridRows, boolean isVertical, int x, int y) {
 		if (!isBoatAddable(shipToAdd, gridRows, gridCols))
 			return false;
-		listBoats.add(shipToAdd);
+		fleet.add(shipToAdd);
 		return true;
 	}
 	
@@ -137,7 +137,7 @@ public class Player {
 			break;
 		}
 		if (isBoatAddable(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
-			listBoats.add(bateau);
+			fleet.add(bateau);
 		} else {
 			bateau = null;
 		}
