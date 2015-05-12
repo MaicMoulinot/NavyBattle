@@ -1,7 +1,7 @@
 /**
  * 
  */
-package logic;
+package com.sinkanic.business;
 
 import java.util.Random;
 

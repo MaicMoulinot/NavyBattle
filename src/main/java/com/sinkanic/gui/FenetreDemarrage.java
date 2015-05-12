@@ -1,4 +1,4 @@
-package interfacegraphique;
+package com.sinkanic.gui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -18,7 +18,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import logic.Game;
+import com.sinkanic.business.Game;
 
 public class FenetreDemarrage {
 
@@ -27,24 +27,14 @@ public class FenetreDemarrage {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FenetreDemarrage window = new FenetreDemarrage();
-					window.frmBatailleNavale.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
 	 */
 	public FenetreDemarrage() {
 		initialize();
+		frmBatailleNavale.setVisible(true);
 	}
 
 	/**

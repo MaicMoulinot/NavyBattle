@@ -1,4 +1,4 @@
-package interfacegraphique;
+package com.sinkanic.gui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -12,8 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
-import logic.Game;
-import logic.NetBattle;
+import com.sinkanic.business.Game;
+import com.sinkanic.business.NetBattle;
+
 import java.awt.Font;
 import java.awt.TextArea;
 

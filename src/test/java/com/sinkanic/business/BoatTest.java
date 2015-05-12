@@ -1,7 +1,7 @@
 /**
  * 
  */
-package logic;
+package com.sinkanic.business;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +10,9 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.sinkanic.business.Boat;
+import com.sinkanic.business.Cellule;
 
 /**
  * @author humanbooster
@@ -49,7 +52,7 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link logic.Boat#Boat(boolean, int, logic.Cellule)}.
+	 * Test method for {@link com.sinkanic.business.Boat#Boat(boolean, int, com.sinkanic.business.Cellule)}.
 	 */
 	@Test
 	public final void testBoatBooleanIntCellule() {
@@ -57,7 +60,7 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link logic.Boat#checkGuess(int, int)}.
+	 * Test method for {@link com.sinkanic.business.Boat#checkGuess(int, int)}.
 	 */
 	@Test
 	public final void testCheckGuess() {
@@ -66,7 +69,7 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link logic.Boat#isTouched(int, int)}.
+	 * Test method for {@link com.sinkanic.business.Boat#isTouched(int, int)}.
 	 */
 	@Test
 	public final void testIsTouched() {
@@ -75,7 +78,7 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link logic.Boat#isDestroyed()}.
+	 * Test method for {@link com.sinkanic.business.Boat#isDestroyed()}.
 	 */
 	@Test
 	public final void testIsDestroyed() {

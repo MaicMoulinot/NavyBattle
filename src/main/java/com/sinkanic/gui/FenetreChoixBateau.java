@@ -1,4 +1,4 @@
-package interfacegraphique;
+package com.sinkanic.gui;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -21,10 +21,10 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-import logic.Boat;
-import logic.Cellule;
-import logic.Game;
-import logic.NetBattle;
+import com.sinkanic.business.Boat;
+import com.sinkanic.business.Cellule;
+import com.sinkanic.business.Game;
+import com.sinkanic.business.NetBattle;
 
 public class FenetreChoixBateau {
 
