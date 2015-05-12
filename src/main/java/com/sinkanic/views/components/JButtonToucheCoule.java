@@ -14,8 +14,8 @@ import java.awt.event.MouseListener;
 public class JButtonToucheCoule extends JButtonGrille {
 	
 	/**
-	 * @param positionHorizontale
-	 * @param positionVerticale
+	 * @param positionHorizontale an int the horizontal position of the JButton
+	 * @param positionVerticale an int the vertical position of the JButton
 	 */
 	public JButtonToucheCoule(int positionHorizontale, int positionVerticale) {
 		super(positionHorizontale, positionVerticale);
