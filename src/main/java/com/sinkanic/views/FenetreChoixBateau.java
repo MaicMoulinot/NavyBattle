@@ -38,13 +38,14 @@ public class FenetreChoixBateau {
 	private JFrame frmGrille;
 	private Game partie;
 
-	/**
-	 * @return the frmPartie
-	 */
 	protected JFrame getFrame() {
 		return frmGrille;
 	}
 
+	/**
+	 * @param name a String
+	 * @param niveau a String
+	 */
 	public FenetreChoixBateau(String name, String niveau) {
 		txtName = name;
 		txtDifficulte = niveau;
@@ -221,10 +222,11 @@ public class FenetreChoixBateau {
 		gbc_Effacer.gridy = 10;
 		frmGrille.getContentPane().add(btnEffacer, gbc_Effacer);
 	}
-
+	
 	/**
-	 * @param x la position horizontale
-	 * @param y la position verticale
+	 * @param x int
+	 * @param y int
+	 * @return a JButtonGrille
 	 */
 	private JButtonGrille addJButton(int x, int y) {
 		JButtonChoixBateau btnBouton = new JButtonChoixBateau(x, y);

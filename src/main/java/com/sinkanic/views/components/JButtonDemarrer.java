@@ -11,10 +11,7 @@ import javax.swing.JButton;
  */
 @SuppressWarnings("serial")
 public class JButtonDemarrer extends JButton {
-
-	/**
-	 * 
-	 */
+	
 	public JButtonDemarrer() {
 		this.setToolTipText("Démarrer une nouvelle partie");
 		setText("Démarrer");

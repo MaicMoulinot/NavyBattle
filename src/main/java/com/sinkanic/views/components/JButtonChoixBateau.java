@@ -14,7 +14,8 @@ import java.awt.event.MouseListener;
 public class JButtonChoixBateau extends JButtonGrille {
 
 	/**
-	 * Constructeur.
+	 * @param positionHorizontale an int
+	 * @param positionVerticale an int
 	 */
 	public JButtonChoixBateau(int positionHorizontale, int positionVerticale) {
 		super(positionHorizontale, positionVerticale);
