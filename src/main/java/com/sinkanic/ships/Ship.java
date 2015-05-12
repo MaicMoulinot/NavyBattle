@@ -19,7 +19,8 @@ public abstract class Ship {
 	/**
 	 * @param x int the horizontal position of the first cell
 	 * @param y int the vertical position of the first cell
-	 * @param direction boolean true if the boat is vertical
+	 * @param vertical boolean true if the boat is vertical
+	 * @see com.sinkanic.ships.Ship
 	 */
 	public Ship(int size, int gridX, int gridY, boolean vertical) {
 		// Set ship orientation bool
