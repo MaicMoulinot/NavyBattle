@@ -3,7 +3,11 @@ package com.sinkanic.business;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.sinkanic.ships.AircraftCarrier;
+import com.sinkanic.ships.Battleship;
+import com.sinkanic.ships.PatrolBoat;
 import com.sinkanic.ships.Ship;
+import com.sinkanic.ships.Submarine;
 
 /**
  * 
@@ -54,6 +58,9 @@ public abstract class Player {
 		int Y = 0;
 		Random randomGenerator = new Random();
 		Ship bateau = null;
+		
+
+
 		do {
 			if(isVertical) {
 				X = randomGenerator.nextInt(tailleGrilleHorizontal);
@@ -66,7 +73,25 @@ public abstract class Player {
 					X = randomGenerator.nextInt(tailleGrilleHorizontal - tailleBateau);
 				}
 			}
-			bateau = new Ship(tailleBateau, X, Y, isVertical);
+			
+			// instantiate proper ship type
+			switch (tailleBateau) {
+			case 5:
+				bateau = new AircraftCarrier(X, Y, isVertical);
+				break;
+			case 4:
+				bateau = new Battleship(X, Y, isVertical);
+				break;
+			case 3:
+				bateau = new Submarine(X, Y, isVertical);
+				break;
+			case 2:
+				bateau = new PatrolBoat(X, Y, isVertical);
+				break;
+				
+			default:
+				break;
+			}
 		} while (!isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical));
 		listBoats.add(bateau);
 	}
@@ -142,7 +167,25 @@ public abstract class Player {
 	}
 
 	public Ship addBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
-		Ship bateau = new Ship(tailleBateau, firstCellX, firstCellY, isVertical);
+		// instantiate proper ship type
+		Ship bateau = null;
+		switch (tailleBateau) {
+		case 5:
+			bateau = new AircraftCarrier(firstCellX, firstCellY, isVertical);
+			break;
+		case 4:
+			bateau = new Battleship(firstCellX, firstCellY, isVertical);
+			break;
+		case 3:
+			bateau = new Submarine(firstCellX, firstCellY, isVertical);
+			break;
+		case 2:
+			bateau = new PatrolBoat(firstCellX, firstCellY, isVertical);
+			break;
+			
+		default:
+			break;
+		}
 		if (isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
 			listBoats.add(bateau);
 		} else {
@@ -152,7 +195,25 @@ public abstract class Player {
 	}
 	
 	public Ship tryBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
-		Ship bateau = new Ship(tailleBateau, firstCellX, firstCellY, isVertical);
+		Ship bateau = null;
+		// instantiate proper ship type
+		switch (tailleBateau) {
+		case 5:
+			bateau = new AircraftCarrier(firstCellX, firstCellY, isVertical);
+			break;
+		case 4:
+			bateau = new Battleship(firstCellX, firstCellY, isVertical);
+			break;
+		case 3:
+			bateau = new Submarine(firstCellX, firstCellY, isVertical);
+			break;
+		case 2:
+			bateau = new PatrolBoat(firstCellX, firstCellY, isVertical);
+			break;
+			
+		default:
+			break;
+		}
 		if (!isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
 			bateau = null;
 		}

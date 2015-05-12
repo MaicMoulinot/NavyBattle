@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.sinkanic.ships.PatrolBoat;
 import com.sinkanic.ships.Ship;
 
 /**
@@ -43,7 +44,7 @@ public class BoatTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		boat = new Ship(2, 0, 0, false); 
+		boat = new PatrolBoat(0, 0, false); 
 	}
 
 	/**

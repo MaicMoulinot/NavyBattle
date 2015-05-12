@@ -11,15 +11,15 @@ import com.sinkanic.business.Cell;
  * @author matthieumaunier
  *
  */
-public class Ship {
+public abstract class Ship {
 
 	public static final String MISSED = "Missed!";
 	public static final String DESTROYED = "Destroyed!";
 	public static final String HIT = "Hit!";
 
-	private ArrayList<Cell>	shipCells;
-	private boolean			isVertical;
-	private String			identity;
+	protected ArrayList<Cell>	shipCells;
+	protected boolean			isVertical;
+	protected String			shipIdentity;
 
 	/**
 	 * Ship Constructor
@@ -34,7 +34,7 @@ public class Ship {
 		shipCells = new ArrayList<Cell>();
 
 		// Ship has no identity. :(
-		identity = "Basic Ship";
+		shipIdentity = "Basic Ship";
 
 		int posX = 0;
 		int posY = 0;
@@ -51,6 +51,9 @@ public class Ship {
 		}
 	}
 	
+	public String getIdentity() {
+		return shipIdentity;
+	}
 	/**
 	 * @return ArrayList<Cellule> ship positions list
 	 */

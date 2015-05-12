@@ -236,7 +236,26 @@ public class FenetreChoixBateau {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Ship bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 5/*Ship.getTailleBateau(cbbTaille.getSelectedItem().toString())*/, rdbtnVertical.isSelected(), x, y);
+				Ship bateaucree = null;
+
+				switch (cbbTaille.getSelectedIndex()) {
+				case 0:
+					bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 5, rdbtnVertical.isSelected(), x, y);
+					break;
+				case 2:
+					bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 4, rdbtnVertical.isSelected(), x, y);
+					break;
+				case 3:
+					bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 3, rdbtnVertical.isSelected(), x, y);
+					break;
+				case 4:
+					bateaucree = partie.getPlayer1().addBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 2, rdbtnVertical.isSelected(), x, y);
+					break;
+
+				default:
+					break;
+				}
+				
 				if (bateaucree != null) {
 					txtResultat.setText("Ton bateau est placé");
 					setColorBateauChosen(bateaucree);

@@ -7,6 +7,7 @@ package com.sinkanic.ships;
  * @author matthieumaunier
  *
  */
+
 public class AircraftCarrier extends Ship {
 
 	/**
