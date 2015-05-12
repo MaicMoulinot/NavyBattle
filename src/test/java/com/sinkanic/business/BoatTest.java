@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.sinkanic.business.Boat;
-import com.sinkanic.business.Cellule;
+import com.sinkanic.business.Cell;
 
 /**
  * @author humanbooster
@@ -41,7 +41,7 @@ public class BoatTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		boat = new Boat(false, 2, new Cellule(0, 0)); 
+		boat = new Boat(false, 2, new Cell(0, 0)); 
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link com.sinkanic.business.Boat#Boat(boolean, int, com.sinkanic.business.Cellule)}.
+	 * Test method for {@link com.sinkanic.business.Boat#Boat(boolean, int, com.sinkanic.business.Cell)}.
 	 */
 	@Test
 	public final void testBoatBooleanIntCellule() {

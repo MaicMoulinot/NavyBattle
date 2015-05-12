@@ -21,14 +21,14 @@ public class Boat {
 	/**
 	 * Détermine les positions du bateau.
 	 */
-	private ArrayList<Cellule> listeCellule;
+	private ArrayList<Cell> listeCellule;
 	
 	// Constructeurs
 	/**
 	 * Constructeur
-	 * @param <Cellule> la première position
+	 * @param <Cell> la première position
 	 */
-	public Boat(Cellule premierePosition) {
+	public Boat(Cell premierePosition) {
 		this(false, 1, premierePosition);
 	}
 	
@@ -36,12 +36,12 @@ public class Boat {
 	 * Constructeur
 	 * @param boolean est vertical
 	 * @param taille nombre de cellule
-	 * @param <Cellule> la première position
+	 * @param <Cell> la première position
 	 */
-	public Boat(boolean vertical, int taille, Cellule premierePosition) {
+	public Boat(boolean vertical, int taille, Cell premierePosition) {
 		isVertical = vertical;
 		nbCellule = taille;
-		listeCellule = new ArrayList<Cellule>();
+		listeCellule = new ArrayList<Cell>();
 		listeCellule.add(premierePosition);
 		for (int i = 1; i < nbCellule; i++) {
 			int positionX = 0;
@@ -53,7 +53,7 @@ public class Boat {
 				positionX = premierePosition.getPositionHorizontal() + i;
 				positionY = premierePosition.getPositionVertical();
 			}
-			listeCellule.add(new Cellule(positionX, positionY));
+			listeCellule.add(new Cell(positionX, positionY));
 		}
 	}
 
@@ -81,13 +81,13 @@ public class Boat {
 	/**
 	 * @return ArrayList<Cellule> la liste des positions
 	 */
-	public ArrayList<Cellule> getPositions() {
+	public ArrayList<Cell> getPositions() {
 		return listeCellule;
 	}
 	
 	protected boolean isTouched(int testX, int testY) {
 		boolean result = false;
-		for (Cellule testCell : listeCellule) {
+		for (Cell testCell : listeCellule) {
 			if (testCell.isEquals(testX, testY)) {
 				result = true;
 				testCell.setTouched();
@@ -102,7 +102,7 @@ public class Boat {
 	 */
 	protected boolean isDestroyed() {
 		boolean result = true;
-		for (Cellule cellule : listeCellule) {
+		for (Cell cellule : listeCellule) {
 			if (!cellule.isTouched()) {
 				result = false;
 				break;
@@ -115,7 +115,7 @@ public class Boat {
 		StringBuilder resultat = new StringBuilder();
 		int compteur = 0;
 		resultat.append("[");
-		for (Cellule cell : getPositions()) {
+		for (Cell cell : getPositions()) {
 			compteur++;
 			resultat.append("(" + cell.getPositionHorizontal() + "," + cell.getPositionVertical() + ")");
 			if (compteur < getPositions().size()) {

@@ -14,7 +14,7 @@ public class PlayerCroissant extends Player {
 	/**
 	 * @return <Cellule> la prochaine tentative du joueur
 	 */
-	public Cellule getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical) {
+	public Cell getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical) {
 		nbTries++;
 		int X = 0;
 		int Y = 0;
@@ -28,7 +28,7 @@ public class PlayerCroissant extends Player {
 				line++;
 			}
 		}
-		Cellule guessedCell = new Cellule(X, Y);
+		Cell guessedCell = new Cell(X, Y);
 		return guessedCell;
 	}
 

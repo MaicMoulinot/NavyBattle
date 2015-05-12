@@ -35,7 +35,7 @@ public abstract class Player {
 	/**
 	 * @return la prochaine tentative du joueur
 	 */
-	public abstract Cellule getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical);
+	public abstract Cell getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical);
 	//	1ère solution : renvoit les valeurs de 0 à 6 dans l'ordre
 	//	2ème solution : renvoit des tirages aléatoires
 	//	3ème solution : renvoit le choix par bouton
@@ -68,7 +68,7 @@ public abstract class Player {
 					X = randomGenerator.nextInt(tailleGrilleHorizontal - tailleBateau);
 				}
 			}
-			bateau = new Boat(isVertical, tailleBateau, new Cellule(X, Y));
+			bateau = new Boat(isVertical, tailleBateau, new Cell(X, Y));
 		} while (!isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical));
 		listBoats.add(bateau);
 	}
@@ -90,10 +90,10 @@ public abstract class Player {
 	/**
 	 * @return ArrayList<Cellule> la liste de toutes les cellules de la flotte du joueur.
 	 */
-	public ArrayList<Cellule> getAllPositions() {
-		ArrayList<Cellule> listeCellules = new ArrayList<Cellule>();
+	public ArrayList<Cell> getAllPositions() {
+		ArrayList<Cell> listeCellules = new ArrayList<Cell>();
 		for (Boat bateau : getFlotte()) {
-			for (Cellule cellule : bateau.getPositions()) {
+			for (Cell cellule : bateau.getPositions()) {
 				listeCellules.add(cellule);
 			}
 		}
@@ -114,12 +114,12 @@ public abstract class Player {
 
 	private boolean isBoatIntegre(Boat nouveauBateau, int tailleGrilleHorizontal, int tailleGrilleVertical) {
 		boolean resultat = true;
-		for (Cellule testCellule : nouveauBateau.getPositions()) {
+		for (Cell testCellule : nouveauBateau.getPositions()) {
 			if (testCellule.getPositionHorizontal() >= tailleGrilleHorizontal || testCellule.getPositionVertical() >= tailleGrilleVertical) {
 				resultat = false;
 				break;
 			} else {
-				for (Cellule cellule : getAllPositions()) {
+				for (Cell cellule : getAllPositions()) {
 					if (testCellule.isEquals(cellule)) {
 						resultat = false;
 						break;
@@ -142,7 +142,7 @@ public abstract class Player {
 	}
 
 	public Boat addBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
-		Boat bateau = new Boat(isVertical, tailleBateau, new Cellule(firstCellX, firstCellY));
+		Boat bateau = new Boat(isVertical, tailleBateau, new Cell(firstCellX, firstCellY));
 		if (isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
 			listBoats.add(bateau);
 		} else {
@@ -152,7 +152,7 @@ public abstract class Player {
 	}
 	
 	public Boat tryBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
-		Boat bateau = new Boat(isVertical, tailleBateau, new Cellule(firstCellX, firstCellY));
+		Boat bateau = new Boat(isVertical, tailleBateau, new Cell(firstCellX, firstCellY));
 		if (!isBoatIntegre(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
 			bateau = null;
 		}

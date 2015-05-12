@@ -4,7 +4,7 @@ package com.sinkanic.business;
  * @author humanbooster
  *
  */
-public class Cellule {
+public class Cell {
 	
 	private boolean isTouched;
 	private int positionHorizontal;
@@ -17,7 +17,7 @@ public class Cellule {
 	/**
 	 * Non touché à l'initialisation
 	 */
-	public Cellule(int positionHorizontale, int positionVerticale) {
+	public Cell(int positionHorizontale, int positionVerticale) {
 		isTouched = false;
 		positionHorizontal = positionHorizontale;
 		positionVertical = positionVerticale;
@@ -41,7 +41,7 @@ public class Cellule {
 		return positionVertical;
 	}
 	
-	public boolean isEquals(Cellule testCellule) {
+	public boolean isEquals(Cell testCellule) {
 		return isEquals(testCellule.getPositionHorizontal(), testCellule.getPositionVertical());
 	}
 	

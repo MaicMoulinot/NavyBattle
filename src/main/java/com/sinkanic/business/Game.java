@@ -72,7 +72,7 @@ public class Game {
 		try {
 			for (Boat boat : player1.getFlotte()) {
 				while (!boat.isDestroyed()) {
-					Cellule tryPlayer = player1.getGuess(tailleGrilleHorizontal, tailleGrilleVertical);//TODO
+					Cell tryPlayer = player1.getGuess(tailleGrilleHorizontal, tailleGrilleVertical);//TODO
 					int X = tryPlayer.getPositionHorizontal();
 					int Y = tryPlayer.getPositionVertical();
 					result.add("Essai du joueur sur (" + X + "," + Y + "): " + checkGuess(X, Y));

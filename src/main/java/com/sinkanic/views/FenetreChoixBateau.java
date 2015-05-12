@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import com.sinkanic.business.Boat;
-import com.sinkanic.business.Cellule;
+import com.sinkanic.business.Cell;
 import com.sinkanic.business.Game;
 import com.sinkanic.views.components.JButtonChoixBateau;
 import com.sinkanic.views.components.JButtonGrille;
@@ -295,21 +295,21 @@ public class FenetreChoixBateau {
 	}
 	
 	private void setColorBateauChosen(Boat bateau) {
-		for (Cellule cellule : bateau.getPositions()) {
+		for (Cell cellule : bateau.getPositions()) {
 			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.getPositionHorizontal(), cellule.getPositionVertical()));
 			bouton.setColorPlaced();
 		}
 	}
 	
 	private void setColorBateauOnMouseOver(Boat bateau) {
-		for (Cellule cellule : bateau.getPositions()) {
+		for (Cell cellule : bateau.getPositions()) {
 			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.getPositionHorizontal(), cellule.getPositionVertical()));
 			bouton.setColorOnMouseOver();
 		}
 	}
 	
 	private void setColorUnplaced(Boat bateau) {
-		for (Cellule cellule : bateau.getPositions()) {
+		for (Cell cellule : bateau.getPositions()) {
 			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.getPositionHorizontal(), cellule.getPositionVertical()));
 			if (!bouton.isPlaced()) {
 				bouton.setColorUnplayed();
