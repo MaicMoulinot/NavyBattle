@@ -71,10 +71,10 @@ public class Game {
 		ArrayList<String> result = new ArrayList<String>();
 		try {
 			for (Boat boat : player1.getFlotte()) {
-				while (!boat.isDestroyed()) {
+				while (!boat.isSunk()) {
 					Cell tryPlayer = player1.getGuess(tailleGrilleHorizontal, tailleGrilleVertical);//TODO
-					int X = tryPlayer.getPositionHorizontal();
-					int Y = tryPlayer.getPositionVertical();
+					int X = tryPlayer.getHorizontalPosition();
+					int Y = tryPlayer.getVerticalPosition();
 					result.add("Essai du joueur sur (" + X + "," + Y + "): " + checkGuess(X, Y));
 				}
 			}

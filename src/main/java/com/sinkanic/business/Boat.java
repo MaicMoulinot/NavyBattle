@@ -47,11 +47,11 @@ public class Boat {
 			int positionX = 0;
 			int positionY = 0;
 			if (isVertical) {
-				positionX = premierePosition.getPositionHorizontal();
-				positionY = premierePosition.getPositionVertical() + i;
+				positionX = premierePosition.getHorizontalPosition();
+				positionY = premierePosition.getVerticalPosition() + i;
 			} else {
-				positionX = premierePosition.getPositionHorizontal() + i;
-				positionY = premierePosition.getPositionVertical();
+				positionX = premierePosition.getHorizontalPosition() + i;
+				positionY = premierePosition.getVerticalPosition();
 			}
 			listeCellule.add(new Cell(positionX, positionY));
 		}
@@ -64,8 +64,8 @@ public class Boat {
 	public String checkGuess(int testX, int testY) {
 		String resultat = MISSED;
 		try {
-			if (isTouched(testX, testY)) {
-				if (isDestroyed()) {
+			if (isHit(testX, testY)) {
+				if (isSunk()) {
 					resultat = DESTROYED;
 				} else {
 					resultat = HIT;
@@ -85,12 +85,12 @@ public class Boat {
 		return listeCellule;
 	}
 	
-	protected boolean isTouched(int testX, int testY) {
+	protected boolean isHit(int testX, int testY) {
 		boolean result = false;
 		for (Cell testCell : listeCellule) {
 			if (testCell.isEquals(testX, testY)) {
 				result = true;
-				testCell.setTouched();
+				testCell.setHit();
 				break;
 			}
 		}
@@ -100,10 +100,10 @@ public class Boat {
 	/**
 	 * @return boolean détermine si l'ennemi est détruit ou non.
 	 */
-	protected boolean isDestroyed() {
+	protected boolean isSunk() {
 		boolean result = true;
 		for (Cell cellule : listeCellule) {
-			if (!cellule.isTouched()) {
+			if (!cellule.isHit()) {
 				result = false;
 				break;
 			}
@@ -117,7 +117,7 @@ public class Boat {
 		resultat.append("[");
 		for (Cell cell : getPositions()) {
 			compteur++;
-			resultat.append("(" + cell.getPositionHorizontal() + "," + cell.getPositionVertical() + ")");
+			resultat.append("(" + cell.getHorizontalPosition() + "," + cell.getVerticalPosition() + ")");
 			if (compteur < getPositions().size()) {
 				resultat.append(",");
 			}

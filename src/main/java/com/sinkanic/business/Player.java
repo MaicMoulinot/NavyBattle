@@ -115,7 +115,7 @@ public abstract class Player {
 	private boolean isBoatIntegre(Boat nouveauBateau, int tailleGrilleHorizontal, int tailleGrilleVertical) {
 		boolean resultat = true;
 		for (Cell testCellule : nouveauBateau.getPositions()) {
-			if (testCellule.getPositionHorizontal() >= tailleGrilleHorizontal || testCellule.getPositionVertical() >= tailleGrilleVertical) {
+			if (testCellule.getHorizontalPosition() >= tailleGrilleHorizontal || testCellule.getVerticalPosition() >= tailleGrilleVertical) {
 				resultat = false;
 				break;
 			} else {
@@ -133,7 +133,7 @@ public abstract class Player {
 	public boolean isDead() {
 		boolean resultat = true;
 		for (Boat bateau : getFlotte()) {
-			if (!bateau.isDestroyed()) {
+			if (!bateau.isSunk()) {
 				resultat = false;
 				break;
 			}

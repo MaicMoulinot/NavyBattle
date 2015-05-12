@@ -69,22 +69,22 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link com.sinkanic.business.Boat#isTouched(int, int)}.
+	 * Test method for {@link com.sinkanic.business.Boat#isHit(int, int)}.
 	 */
 	@Test
 	public final void testIsTouched() {
 		boat.checkGuess(0, 0);
-		assertTrue(boat.isTouched(0, 0));
+		assertTrue(boat.isHit(0, 0));
 	}
 
 	/**
-	 * Test method for {@link com.sinkanic.business.Boat#isDestroyed()}.
+	 * Test method for {@link com.sinkanic.business.Boat#isSunk()}.
 	 */
 	@Test
 	public final void testIsDestroyed() {
 		boat.checkGuess(0, 0);
 		boat.checkGuess(1, 0);
-		assertTrue(boat.isDestroyed());
+		assertTrue(boat.isSunk());
 	}
 
 }

@@ -6,48 +6,48 @@ package com.sinkanic.business;
  */
 public class Cell {
 	
-	private boolean isTouched;
+	private boolean isHit;
 	private int positionHorizontal;
 	private int positionVertical;
 
-	void setTouched() {
-		isTouched = true;
+	void setHit() {
+		isHit = true;
 	}
 
 	/**
 	 * Non touché à l'initialisation
 	 */
 	public Cell(int positionHorizontale, int positionVerticale) {
-		isTouched = false;
+		isHit = false;
 		positionHorizontal = positionHorizontale;
 		positionVertical = positionVerticale;
 	}
 	
-	public boolean isTouched() {
-		return isTouched;
+	public boolean isHit() {
+		return isHit;
 	}
 
 	/**
 	 * @return the positionHorizontal
 	 */
-	public int getPositionHorizontal() {
+	public int getHorizontalPosition() {
 		return positionHorizontal;
 	}
 
 	/**
 	 * @return the positionVertical
 	 */
-	public int getPositionVertical() {
+	public int getVerticalPosition() {
 		return positionVertical;
 	}
 	
 	public boolean isEquals(Cell testCellule) {
-		return isEquals(testCellule.getPositionHorizontal(), testCellule.getPositionVertical());
+		return isEquals(testCellule.getHorizontalPosition(), testCellule.getVerticalPosition());
 	}
 	
 	public boolean isEquals(int positionHorizontal, int positionVertical) {
 		boolean resultat = false;
-		if (positionHorizontal == getPositionHorizontal() && positionVertical == getPositionVertical()) {
+		if (positionHorizontal == getHorizontalPosition() && positionVertical == getVerticalPosition()) {
 			resultat = true;
 		}
 		return resultat;
