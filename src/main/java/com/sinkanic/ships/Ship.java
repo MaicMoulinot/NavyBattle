@@ -122,6 +122,7 @@ public abstract class Ship {
 		return sb.toString();		
 	}
 
+	
 	public int getShipSize()
 	{		
 		return (shipCells.size());
