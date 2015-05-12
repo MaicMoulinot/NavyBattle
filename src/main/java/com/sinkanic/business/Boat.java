@@ -1,4 +1,4 @@
-package logic;
+package com.sinkanic.business;
 
 import java.util.ArrayList;
 
@@ -21,51 +21,47 @@ public class Boat {
 	/**
 	 * Détermine les positions du bateau.
 	 */
-	private ArrayList<Cellule> listeCellule;
-	
-	// Constructeurs
-	/**
-	 * Constructeur
-	 * @param <Cellule> la première position
-	 */
-	public Boat(Cellule premierePosition) {
-		this(false, 1, premierePosition);
-	}
+	private ArrayList<Cell> listeCellule;
 	
 	/**
-	 * Constructeur
-	 * @param boolean est vertical
-	 * @param taille nombre de cellule
-	 * @param <Cellule> la première position
+	 * Constructor
+	 * @param vertical boolean true if the Boat is vertical
+	 * @param taille number of Cells
+	 * @param premierePosition {@link com.sinkanic.business.Cell} the first Cell
 	 */
-	public Boat(boolean vertical, int taille, Cellule premierePosition) {
+	public Boat(boolean vertical, int taille, Cell premierePosition) {
 		isVertical = vertical;
 		nbCellule = taille;
-		listeCellule = new ArrayList<Cellule>();
+		listeCellule = new ArrayList<Cell>();
 		listeCellule.add(premierePosition);
 		for (int i = 1; i < nbCellule; i++) {
 			int positionX = 0;
 			int positionY = 0;
 			if (isVertical) {
-				positionX = premierePosition.getPositionHorizontal();
-				positionY = premierePosition.getPositionVertical() + i;
+				positionX = premierePosition.getHorizontalPosition();
+				positionY = premierePosition.getVerticalPosition() + i;
 			} else {
-				positionX = premierePosition.getPositionHorizontal() + i;
-				positionY = premierePosition.getPositionVertical();
+				positionX = premierePosition.getHorizontalPosition() + i;
+				positionY = premierePosition.getVerticalPosition();
 			}
-			listeCellule.add(new Cellule(positionX, positionY));
+			listeCellule.add(new Cell(positionX, positionY));
 		}
 	}
 
 	// Méthodes
 	/**
-	 * @see Player.checkGuess()
+	 * @param testX int the horizontal position to check
+	 * @param testY int the vertical position to check
+	 * @return a String the result 
+	 * @see com.sinkanic.business.Boat#MISSED
+	 * @see com.sinkanic.business.Boat#HIT
+	 * @see com.sinkanic.business.Boat#DESTROYED
 	 */
 	public String checkGuess(int testX, int testY) {
 		String resultat = MISSED;
 		try {
-			if (isTouched(testX, testY)) {
-				if (isDestroyed()) {
+			if (isHit(testX, testY)) {
+				if (isSunk()) {
 					resultat = DESTROYED;
 				} else {
 					resultat = HIT;
@@ -79,18 +75,21 @@ public class Boat {
 	}
 	
 	/**
-	 * @return ArrayList<Cellule> la liste des positions
+	 * @return ArrayList<{@link com.sinkanic.business.Cell}> the positions
 	 */
-	public ArrayList<Cellule> getPositions() {
+	public ArrayList<Cell> getPositions() {
 		return listeCellule;
 	}
 	
-	protected boolean isTouched(int testX, int testY) {
+	/**
+	 * @return true if the boat is hit on position (X, Y).
+	 */
+	protected boolean isHit(int testX, int testY) {
 		boolean result = false;
-		for (Cellule testCell : listeCellule) {
+		for (Cell testCell : listeCellule) {
 			if (testCell.isEquals(testX, testY)) {
 				result = true;
-				testCell.setTouched();
+				testCell.setHit();
 				break;
 			}
 		}
@@ -98,12 +97,12 @@ public class Boat {
 	}
 
 	/**
-	 * @return boolean détermine si l'ennemi est détruit ou non.
+	 * @return true if the boat is sunk.
 	 */
-	protected boolean isDestroyed() {
+	protected boolean isSunk() {
 		boolean result = true;
-		for (Cellule cellule : listeCellule) {
-			if (!cellule.isTouched()) {
+		for (Cell cellule : listeCellule) {
+			if (!cellule.isHit()) {
 				result = false;
 				break;
 			}
@@ -115,9 +114,9 @@ public class Boat {
 		StringBuilder resultat = new StringBuilder();
 		int compteur = 0;
 		resultat.append("[");
-		for (Cellule cell : getPositions()) {
+		for (Cell cell : getPositions()) {
 			compteur++;
-			resultat.append("(" + cell.getPositionHorizontal() + "," + cell.getPositionVertical() + ")");
+			resultat.append("(" + cell.getHorizontalPosition() + "," + cell.getVerticalPosition() + ")");
 			if (compteur < getPositions().size()) {
 				resultat.append(",");
 			}
@@ -126,10 +125,6 @@ public class Boat {
 		return resultat.toString();
 	}
 	
-	/**
-	 * @param <String> typeBateau
-	 * @return <Integer> la taille du bateau
-	 */
 	public static int getTailleBateau(String typeBateau) {
 		int taille = 0;
 		switch (typeBateau) {
@@ -149,9 +144,6 @@ public class Boat {
 		return taille;
 	}
 
-	/**
-	 * @return the nbCellule
-	 */
 	public int getTaille() {
 		return nbCellule;
 	}

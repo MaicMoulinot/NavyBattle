@@ -1,8 +1,10 @@
-package interfacegraphique;
+package com.sinkanic.views;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.TextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -12,26 +14,23 @@ import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
-import logic.Game;
-import logic.NetBattle;
-import java.awt.Font;
-import java.awt.TextArea;
+import com.sinkanic.business.Game;
+import com.sinkanic.views.components.JButtonDemarrer;
+import com.sinkanic.views.components.JButtonQuitter;
 
 public class FenetrePartie {
 
 	private String txtName;
 	private String txtDifficulte;
 	private JFrame frmPartie;
-
-	/**
-	 * @return the frmPartie
-	 */
+	
 	protected JFrame getFrame() {
 		return frmPartie;
 	}
-
+	
 	/**
-	 * Create the application.
+	 * @param name a String the player's name
+	 * @param niveau a String the level
 	 */
 	public FenetrePartie(String name, String niveau) {
 		txtName = name;
@@ -64,7 +63,7 @@ public class FenetrePartie {
 		gbc_separator.gridy = 0;
 		frmPartie.getContentPane().add(separator, gbc_separator);
 
-		Game partie = NetBattle.startGame(txtDifficulte);
+		Game partie = new Game(txtDifficulte);
 		JLabel lblInit = new JLabel("Démarrage d'une partie de niveau " + txtDifficulte);
 		lblInit.setHorizontalAlignment(SwingConstants.LEFT);
 		GridBagConstraints gbc_lblInit = new GridBagConstraints();

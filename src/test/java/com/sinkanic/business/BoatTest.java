@@ -1,7 +1,7 @@
 /**
  * 
  */
-package logic;
+package com.sinkanic.business;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +10,9 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.sinkanic.business.Boat;
+import com.sinkanic.business.Cell;
 
 /**
  * @author humanbooster
@@ -38,7 +41,7 @@ public class BoatTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		boat = new Boat(false, 2, new Cellule(0, 0)); 
+		boat = new Boat(false, 2, new Cell(0, 0)); 
 	}
 
 	/**
@@ -49,7 +52,7 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link logic.Boat#Boat(boolean, int, logic.Cellule)}.
+	 * Test method for {@link com.sinkanic.business.Boat#Boat(boolean, int, com.sinkanic.business.Cell)}.
 	 */
 	@Test
 	public final void testBoatBooleanIntCellule() {
@@ -57,7 +60,7 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link logic.Boat#checkGuess(int, int)}.
+	 * Test method for {@link com.sinkanic.business.Boat#checkGuess(int, int)}.
 	 */
 	@Test
 	public final void testCheckGuess() {
@@ -66,22 +69,22 @@ public class BoatTest {
 	}
 
 	/**
-	 * Test method for {@link logic.Boat#isTouched(int, int)}.
+	 * Test method for {@link com.sinkanic.business.Boat#isHit(int, int)}.
 	 */
 	@Test
 	public final void testIsTouched() {
 		boat.checkGuess(0, 0);
-		assertTrue(boat.isTouched(0, 0));
+		assertTrue(boat.isHit(0, 0));
 	}
 
 	/**
-	 * Test method for {@link logic.Boat#isDestroyed()}.
+	 * Test method for {@link com.sinkanic.business.Boat#isSunk()}.
 	 */
 	@Test
 	public final void testIsDestroyed() {
 		boat.checkGuess(0, 0);
 		boat.checkGuess(1, 0);
-		assertTrue(boat.isDestroyed());
+		assertTrue(boat.isSunk());
 	}
 
 }

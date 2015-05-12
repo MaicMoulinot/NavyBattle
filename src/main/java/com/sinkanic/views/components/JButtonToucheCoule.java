@@ -1,7 +1,7 @@
 /**
  * 
  */
-package interfacegraphique;
+package com.sinkanic.views.components;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,9 +12,10 @@ import java.awt.event.MouseListener;
  */
 @SuppressWarnings("serial")
 public class JButtonToucheCoule extends JButtonGrille {
-
+	
 	/**
-	 * Constructeur.
+	 * @param positionHorizontale an int the horizontal position of the JButton
+	 * @param positionVerticale an int the vertical position of the JButton
 	 */
 	public JButtonToucheCoule(int positionHorizontale, int positionVerticale) {
 		super(positionHorizontale, positionVerticale);

@@ -1,4 +1,4 @@
-package logic;
+package com.sinkanic.business;
 
 import java.util.ArrayList;
 
@@ -28,10 +28,10 @@ public class Game {
 	
 	// Méthodes
 	/**
-	 * Génère une partie.
-	 * @param <String> difficulte la difficulté choisie
+	 * Launch a game.
+	 * @param difficulte a String the chosen level.
 	 */
-	public void setup(String difficulte) {
+	public Game(String difficulte) {
 		switch (difficulte) {
 		case BIDON:
 			// 1D 1 bateau de taille 3
@@ -65,16 +65,16 @@ public class Game {
 	 * demande son prochain essai au joueur et demande à
 	 * l'ennemi d'indiquer s'il est touché. Quand l'ennemi est
 	 * mort, affiche le nombre d'essais utilisés puis quitte.
-	 * @return ArrayList<String> les résultats
+	 * @return ArrayList<String> the result
 	 * */
 	public ArrayList<String> play() {
 		ArrayList<String> result = new ArrayList<String>();
 		try {
 			for (Boat boat : player1.getFlotte()) {
-				while (!boat.isDestroyed()) {
-					Cellule tryPlayer = player1.getGuess(tailleGrilleHorizontal, tailleGrilleVertical);//TODO
-					int X = tryPlayer.getPositionHorizontal();
-					int Y = tryPlayer.getPositionVertical();
+				while (!boat.isSunk()) {
+					Cell tryPlayer = player1.getGuess(tailleGrilleHorizontal, tailleGrilleVertical);
+					int X = tryPlayer.getHorizontalPosition();
+					int Y = tryPlayer.getVerticalPosition();
 					result.add("Essai du joueur sur (" + X + "," + Y + "): " + checkGuess(X, Y));
 				}
 			}
@@ -86,7 +86,7 @@ public class Game {
 	}
 
 	/**
-	 * @return de la triche le bateau est situé sur les cases
+	 * @return cheat tips ArrayList<String>
 	 */
 	public ArrayList<String> afficheTriche() {
 		ArrayList<String> resultat = new ArrayList<String>();
@@ -96,7 +96,12 @@ public class Game {
 	}
 
 	/**
-	 * @see Player.checkGuess()
+	 * @param testX int the horizontal position to check
+	 * @param testY int the vertical position to check
+	 * @return a String the result belonging to one of these :
+	 * {@link com.sinkanic.business.Boat#MISSED}
+	 * {@link com.sinkanic.business.Boat#HIT}
+	 * {@link com.sinkanic.business.Boat#DESTROYED}
 	 */
 	public String checkGuess(int testX, int testY) {
 		player1.incrementNbEssais();

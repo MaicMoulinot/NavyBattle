@@ -1,4 +1,4 @@
-package interfacegraphique;
+package com.sinkanic.views;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,9 +19,10 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-import logic.Boat;
-import logic.Game;
-import logic.NetBattle;
+import com.sinkanic.business.Boat;
+import com.sinkanic.business.Game;
+import com.sinkanic.views.components.JButtonGrille;
+import com.sinkanic.views.components.JButtonToucheCoule;
 
 public class FenetreToucheCoule {
 
@@ -30,21 +31,16 @@ public class FenetreToucheCoule {
 	private JTextArea txtResultat;
 	private JFrame frmGrille;
 	private Game partie;
-
-	/**
-	 * @return the frmPartie
-	 */
+	
 	protected JFrame getFrame() {
 		return frmGrille;
 	}
-
-	public FenetreToucheCoule(String name, String niveau) {
-		txtName = name;
-		txtDifficulte = niveau;
-		partie = NetBattle.startGame(txtDifficulte);
-		initialize();
-	}
 	
+	/**
+	 * @param name a String 
+	 * @param niveau a String 
+	 * @param game a com.sinkanic.business.Game
+	 */
 	public FenetreToucheCoule(String name, String niveau, Game game) {
 		txtName = name;
 		txtDifficulte = niveau;

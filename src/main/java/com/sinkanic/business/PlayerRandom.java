@@ -1,7 +1,7 @@
 /**
  * 
  */
-package logic;
+package com.sinkanic.business;
 
 import java.util.Random;
 
@@ -10,11 +10,8 @@ import java.util.Random;
  *
  */
 public class PlayerRandom extends Player {
-
-	/**
-	 * @return la prochaine tentative du joueur
-	 */
-	public Cellule getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical) {
+	
+	public Cell getGuess(int tailleGrilleHorizontal, int tailleGrilleVertical) {
 		nbTries++;
 		Random randomGenerator = new Random();
 	    int randomHorizontal = randomGenerator.nextInt(tailleGrilleHorizontal-1);
@@ -22,7 +19,7 @@ public class PlayerRandom extends Player {
 	    if (tailleGrilleVertical > 1) {
 	    	randomVertical = randomGenerator.nextInt(tailleGrilleVertical-1);
 	    }
-	    Cellule guessedCell = new Cellule(randomHorizontal, randomVertical);
+	    Cell guessedCell = new Cell(randomHorizontal, randomVertical);
 		return guessedCell;
 	}
 
