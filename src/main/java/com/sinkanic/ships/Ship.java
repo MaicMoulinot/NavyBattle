@@ -13,6 +13,10 @@ import com.sinkanic.business.Cell;
  */
 public abstract class Ship {
 
+	public static final String MISSED = "Missed!";
+	public static final String DESTROYED = "Destroyed!";
+	public static final String HIT = "Hit!";
+
 	private ArrayList<Cell>	shipCells;
 	private boolean			isVertical;
 	private String			identity;
@@ -65,4 +69,38 @@ public abstract class Ship {
 		}
 		return result;
 	}	
+
+	/**
+	 * @see Player.checkGuess()
+	 */
+	public String checkGuess(int testX, int testY) {
+		String resultat = MISSED;
+		try {
+			if (isHit(testX, testY)) {
+				if (isSunk()) {
+					resultat = DESTROYED;
+				} else {
+					resultat = HIT;
+				}
+			}
+		} catch (NullPointerException exception) {
+			System.out.println("Paramètre null " + exception.getMessage());
+			resultat = "Paramètre null!!";
+		}
+		return resultat;
+	}
+
+	/**
+	 * @return boolean détermine si l'ennemi est détruit ou non.
+	 */
+	protected boolean isSunk() {
+		boolean result = true;
+		for (Cell cellule : shipCells) {
+			if (!cellule.isHit()) {
+				result = false;
+				break;
+			}
+		}
+		return result;
+	}
 }
