@@ -45,6 +45,7 @@ public class CellTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		cell = null;
 	}
 	
 	/**

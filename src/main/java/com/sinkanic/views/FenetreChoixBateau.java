@@ -274,8 +274,7 @@ public class FenetreChoixBateau {
 
 				bateaucree = partie.getPlayer1().addBoat(shipToAdd, 
 						partie.getTailleGrilleHorizontal(), 
-						partie.getTailleGrilleVertical(), 
-						rdbtnVertical.isSelected(), x, y);	
+						partie.getTailleGrilleVertical());	
 				
 				if (bateaucree != false) {
 					txtResultat.setText("Ton bateau est placé");
