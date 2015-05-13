@@ -120,7 +120,7 @@ public class Player {
 		fleet.add(shipToAdd);
 		return true;
 	}
-	
+	@Deprecated
 	public Ship addBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
 		// instantiate proper ship type
 		Ship bateau = null;
@@ -147,7 +147,8 @@ public class Player {
 		}
 		return bateau;
 	}
-	
+
+	@Deprecated
 	public Ship tryBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
 		Ship bateau = null;
 		// instantiate proper ship type
