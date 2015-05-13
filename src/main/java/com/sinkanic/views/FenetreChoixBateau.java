@@ -41,6 +41,7 @@ public class FenetreChoixBateau {
 	private JRadioButton rdbtnVertical;
 	private JFrame frmGrille;
 	private Game partie;
+	private Ship shipToValidate;
 
 	protected JFrame getFrame() {
 		return frmGrille;
@@ -60,6 +61,7 @@ public class FenetreChoixBateau {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		shipToValidate = null;
 		frmGrille = null;
 		frmGrille = new JFrame();
 		frmGrille.setTitle("Joueur " + txtName + " - Niveau " + txtDifficulte);
@@ -262,7 +264,6 @@ public class FenetreChoixBateau {
 		btnBouton.setName("Btn"+x+y);
 
 		btnBouton.addMouseListener(new MouseListener() {
-			private Ship bateau = null;
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -292,9 +293,9 @@ public class FenetreChoixBateau {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				bateau = tryBoat();
-				if (bateau != null) {
-					setColorBateauOnMouseOver(bateau);
+				shipToValidate = tryBoat();
+				if (shipToValidate != null) {
+					setColorBateauOnMouseOver(shipToValidate);
 				} else {
 					btnBouton.setColorOnMouseOverBateauKo();
 				}
@@ -302,12 +303,12 @@ public class FenetreChoixBateau {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				bateau = tryBoat();
+				shipToValidate = tryBoat();
 				if (btnBouton.isPlaced()) {
 					btnBouton.setColorPlaced();
 				} else {
-					if (bateau != null) {
-						setColorUnplaced(bateau);
+					if (shipToValidate != null) {
+						setColorUnplaced(shipToValidate);
 					} else {
 						btnBouton.setColorUnplayed();
 					}
@@ -315,7 +316,7 @@ public class FenetreChoixBateau {
 			}
 			
 			private Ship tryBoat() {
-				return bateau = partie.getPlayer1().tryBoat(partie.getTailleGrilleHorizontal(), 
+				return partie.getPlayer1().tryBoat(partie.getTailleGrilleHorizontal(), 
 						partie.getTailleGrilleVertical(), 
 						getShipFromSelection(cbbTaille.getSelectedIndex(), x, y).getShipSize(), 
 						rdbtnVertical.isSelected(), x, y);
