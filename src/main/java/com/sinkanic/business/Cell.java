@@ -1,14 +1,15 @@
 package com.sinkanic.business;
 
+import java.awt.Point;
+
 /**
  * @author humanbooster
  *
  */
-public class Cell {
+public class Cell extends Point {
 	
+	private static final long serialVersionUID = 1L;
 	private boolean isHit;
-	private int positionHorizontal;
-	private int positionVertical;
 
 	public void setHit() {
 		isHit = true;
@@ -21,38 +22,30 @@ public class Cell {
 	 */
 	public Cell(int positionHorizontale, int positionVerticale) {
 		isHit = false;
-		positionHorizontal = positionHorizontale;
-		positionVertical = positionVerticale;
+		setLocation(positionHorizontale, positionVerticale);
 	}
 	
 	public boolean isHit() {
 		return isHit;
 	}
-
-	/**
-	 * @return the positionHorizontal
-	 */
-	public int getHorizontalPosition() {
-		return positionHorizontal;
-	}
-
-	/**
-	 * @return the positionVertical
-	 */
-	public int getVerticalPosition() {
-		return positionVertical;
+	
+	public boolean isSamePosition(Cell testCellule) {
+		return isSamePosition((int) testCellule.getIntX(), (int) testCellule.getIntY());
 	}
 	
-	public boolean isEquals(Cell testCellule) {
-		return isEquals(testCellule.getHorizontalPosition(), testCellule.getVerticalPosition());
-	}
-	
-	public boolean isEquals(int positionHorizontal, int positionVertical) {
+	public boolean isSamePosition(int positionHorizontal, int positionVertical) {
 		boolean resultat = false;
-		if (positionHorizontal == getHorizontalPosition() && positionVertical == getVerticalPosition()) {
+		if (positionHorizontal == getIntX() && positionVertical == getIntY()) {
 			resultat = true;
 		}
 		return resultat;
 	}
-
+	
+	public int getIntX() {
+		return (int) getX();
+	}
+	
+	public int getIntY() {
+		return (int) getY();
+	}
 }

@@ -64,7 +64,7 @@ public abstract class Ship {
 	public boolean isHit(int testX, int testY) {
 		boolean result = false;
 		for (Cell testCell : shipCells) {
-			if (testCell.isEquals(testX, testY)) {
+			if (testCell.isSamePosition(testX, testY)) {
 				result = true;
 				testCell.setHit();
 				break;
@@ -118,7 +118,7 @@ public abstract class Ship {
 		sb.append("[");
 		for (Cell cell : getPositions()) {
 			compteur++;
-			sb.append("(" + cell.getHorizontalPosition() + "," + cell.getVerticalPosition() + ")");
+			sb.append(cell.toString());
 			if (compteur < getPositions().size()) {
 				sb.append(",");
 			}

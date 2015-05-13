@@ -77,9 +77,7 @@ public class Game {
 		try {
 			while (!player2.isDead()) {
 				Cell tryPlayer = ((PlayerAI) player2).getRandomCell(tailleGrilleHorizontal, tailleGrilleVertical);
-				int X = tryPlayer.getHorizontalPosition();
-				int Y = tryPlayer.getVerticalPosition();
-				result.add("Essai du joueur sur (" + X + "," + Y + "): " + checkGuess(player1, player2, X, Y));
+				result.add("Essai du joueur sur " + tryPlayer.toString() + ": " + checkGuess(player1, player2, tryPlayer.getIntX(), tryPlayer.getIntY()));
 			}
 			result.add("Partie terminée en " + player1.getNbEssais() + " essais.");
 		} catch (Exception exception) {

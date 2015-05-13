@@ -89,12 +89,12 @@ public class Player {
 	protected boolean isBoatAddable(Ship nouveauBateau, int tailleGrilleHorizontal, int tailleGrilleVertical) {
 		boolean resultat = true;
 		for (Cell testCellule : nouveauBateau.getPositions()) {
-			if (testCellule.getHorizontalPosition() >= tailleGrilleHorizontal || testCellule.getVerticalPosition() >= tailleGrilleVertical) {
+			if (testCellule.getIntX() >= tailleGrilleHorizontal || testCellule.getIntY() >= tailleGrilleVertical) {
 				resultat = false;
 				break;
 			} else {
 				for (Cell cellule : getAllPositions()) {
-					if (testCellule.isEquals(cellule)) {
+					if (testCellule.isSamePosition(cellule)) {
 						resultat = false;
 						break;
 					}

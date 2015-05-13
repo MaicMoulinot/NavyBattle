@@ -204,7 +204,7 @@ public class FenetreToucheCoule {
 					// player2 plays
 					if (!isGameFinished) {
 						Cell randomCell = ((PlayerAI) partie.getPlayer2()).getRandomCell(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical());
-						switch (partie.checkGuess(partie.getPlayer2(), partie.getPlayer1(), randomCell.getHorizontalPosition(), randomCell.getVerticalPosition())) {
+						switch (partie.checkGuess(partie.getPlayer2(), partie.getPlayer1(), randomCell.getIntX(), randomCell.getIntY())) {
 						case Ship.MISSED:
 							resultat.append("\nCoup de " + partie.getPlayer2().getName() + ": aucun de tes bateaux n'a été touché, yeah !!");
 							break;
