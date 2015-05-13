@@ -19,7 +19,7 @@ public abstract class Ship {
 
 	protected ArrayList<Cell>	shipCells;
 	protected boolean			isVertical;
-	protected static String			shipIdentity;
+	protected String			shipIdentity;
 	
 	/**
 	 * Ship Constructor
@@ -51,7 +51,7 @@ public abstract class Ship {
 		}
 	}
 	
-	public static String getIdentity() {
+	public String getIdentity() {
 		return shipIdentity;
 	}
 	/**

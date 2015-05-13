@@ -138,7 +138,7 @@ public class FenetreChoixBateau {
 
 		cbbTaille = new JComboBox<String>();
 		pnlOptions.add(cbbTaille);
-		cbbTaille.setModel(new DefaultComboBoxModel<String>(new String[] {AircraftCarrier.getIdentity(), Battleship.getIdentity(), Submarine.getIdentity(), PatrolBoat.getIdentity()}));
+		cbbTaille.setModel(new DefaultComboBoxModel<String>(new String[] {"AircraftCarrier", "Battleship", "Submarine", "PatrolBoat"}));
 		pnlOptions.add(new JLabel());
 		
 		//grille		
