@@ -67,32 +67,29 @@ public class Game {
 	}
 	
 	/**
-	 * Tant que l'ennemi n'est pas mort, le jeu	
-	 * demande son prochain essai au joueur et demande à
-	 * l'ennemi d'indiquer s'il est touché. Quand l'ennemi est
-	 * mort, affiche le nombre d'essais utilisés puis quitte.
-	 * @return ArrayList<String> the result
+	 * As long as the AI player is not dead, the game
+	 * asks the player his next try and test the AI player's fleet.
+	 * When AI player is dead, displays the number of tries.
+	 * @return a list of results.
 	 * */
 	public ArrayList<String> play() {
 		ArrayList<String> result = new ArrayList<String>();
 		try {
-			for (Ship boat : player2.getFlotte()) {
-				while (!boat.isSunk()) {
-					Cell tryPlayer = ((PlayerAI) player2).getRandomCell(tailleGrilleHorizontal, tailleGrilleVertical);
-					int X = tryPlayer.getHorizontalPosition();
-					int Y = tryPlayer.getVerticalPosition();
-					result.add("Essai du joueur sur (" + X + "," + Y + "): " + checkGuess(player1, player2, X, Y));
-				}
+			while (!player2.isDead()) {
+				Cell tryPlayer = ((PlayerAI) player2).getRandomCell(tailleGrilleHorizontal, tailleGrilleVertical);
+				int X = tryPlayer.getHorizontalPosition();
+				int Y = tryPlayer.getVerticalPosition();
+				result.add("Essai du joueur sur (" + X + "," + Y + "): " + checkGuess(player1, player2, X, Y));
 			}
 			result.add("Partie terminée en " + player1.getNbEssais() + " essais.");
-		} catch (NullPointerException exception) {
-			System.out.println("Paramètre null : " + exception.getMessage());
+		} catch (Exception exception) {
+			System.out.println("Trouble : " + exception.getMessage());
 		}
 		return result;
 	}
 
 	/**
-	 * @return cheat tips ArrayList<String>
+	 * @return a list of cheat tips.
 	 */
 	public ArrayList<String> afficheTriche() {
 		ArrayList<String> resultat = new ArrayList<String>();
@@ -100,16 +97,18 @@ public class Game {
 		resultat.addAll(getPlayer2().afficheBoats());
 		return resultat;
 	}
-
+	
 	/**
+	 * 
 	 * @param playing the Player trying to hit a boat from the checked's player fleet
 	 * @param checked the Player beeing checked
 	 * @param testX int the horizontal position to check
 	 * @param testY int the vertical position to check
-	 * @return a String the result 
-	 * @see com.sinkanic.business.Ship.MISSED
-	 * @see com.sinkanic.business.Ship.HIT
-	 * @see com.sinkanic.business.Ship.DESTROYED
+	 * @return a String the result belonging to one of these :
+	 * {@link com.sinkanic.ships.Ship#MISSED},
+	 * {@link com.sinkanic.ships.Ship#HIT},
+	 * {@link com.sinkanic.ships.Ship#DESTROYED}.
+	 * @see com.sinkanic.business.Player#checkGuess(int, int)
 	 */
 	public String checkGuess(Player playing, Player checked, int testX, int testY) {
 		playing.incrementNbEssais();

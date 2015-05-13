@@ -48,9 +48,10 @@ public class Player {
 	 * @param testX int the horizontal position to check
 	 * @param testY int the vertical position to check
 	 * @return a String the result belonging to one of these :
-	 * {@link com.sinkanic.business.Boat#MISSED}
-	 * {@link com.sinkanic.business.Boat#HIT}
-	 * {@link com.sinkanic.business.Boat#DESTROYED}
+	 * {@link com.sinkanic.ships.Ship#MISSED},
+	 * {@link com.sinkanic.ships.Ship#HIT},
+	 * {@link com.sinkanic.ships.Ship#DESTROYED}.
+	 * @see com.sinkanic.ships.Ship#checkGuess(int, int)
 	 */
 	public String checkGuess(int testX, int testY) {
 		String resultat = Ship.MISSED;

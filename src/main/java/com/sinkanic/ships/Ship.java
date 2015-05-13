@@ -20,21 +20,13 @@ public abstract class Ship {
 	protected ArrayList<Cell>	shipCells;
 	protected boolean			isVertical;
 	protected String			shipIdentity;
-
+	
 	/**
-
 	 * Ship Constructor
-	 * @param size Ship size in <Cell> determined by other ship
-	 * @param x int the horizontal position of the first cell
-	 * @param y int the vertical position of the first cell
-	 * @param direction boolean true if the boat is vertical
-
 	 * @param size int the number of {@link com.sinkanic.business.Cell}
 	 * @param gridX int the horizontal position of the first cell
 	 * @param gridY int the vertical position of the first cell
 	 * @param vertical boolean true if the boat is vertical
-	 * @see com.sinkanic.ships.Ship
-
 	 */
 	public Ship(int size, int gridX, int gridY, boolean vertical) {
 		// Set ship orientation
@@ -63,7 +55,7 @@ public abstract class Ship {
 		return shipIdentity;
 	}
 	/**
-	 * @return ArrayList<Cellule> ship positions list
+	 * @return a list of all positions
 	 */
 	public ArrayList<Cell> getPositions() {
 		return shipCells;
@@ -79,10 +71,15 @@ public abstract class Ship {
 			}
 		}
 		return result;
-	}	
-
+	}
+	
 	/**
-	 * @see Player.checkGuess()
+	 * @param testX int the horizontal position to check
+	 * @param testY int the vertical position to check
+	 * @return a String the result belonging to one of these :
+	 * {@link com.sinkanic.ships.Ship#MISSED},
+	 * {@link com.sinkanic.ships.Ship#HIT},
+	 * {@link com.sinkanic.ships.Ship#DESTROYED}.
 	 */
 	public String checkGuess(int testX, int testY) {
 		String resultat = MISSED;
