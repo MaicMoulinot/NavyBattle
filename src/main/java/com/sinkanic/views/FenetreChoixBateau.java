@@ -76,7 +76,9 @@ public class FenetreChoixBateau {
 		frmGrille.getContentPane().setLayout(gridBagLayout);
 
 		partie = new Game(txtDifficulte, txtName);
-
+		//
+		// TODO: add glue code between game model / controller
+		//
 		// Titre
 		JTextArea txtTitre = new JTextArea("Début de la partie : place ta flotte !!");
 		txtTitre.setFont(new Font("Tahoma", Font.PLAIN, 18));
