@@ -34,6 +34,7 @@ public class GameModel extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+
 	public Dimension getGridSize()	{ return gridSize; }		// returns Dimension object
 	public int getGridRows() 		{ return gridSize.height; }	// returns specific dimension.
 	public int getGridCols()		{ return gridSize.width; }	// this may be useless. 

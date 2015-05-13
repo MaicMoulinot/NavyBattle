@@ -2,6 +2,8 @@ package com.sinkanic.business;
 
 import java.util.ArrayList;
 
+import com.sinkanic.controllers.GameController;
+import com.sinkanic.models.GameModel;
 import com.sinkanic.ships.Ship;
 
 
@@ -28,6 +30,9 @@ public class Game {
 	 */
 	private Player player1; //joueur
 	private PlayerAI player2; //ordi
+	
+	private GameModel model;
+	private GameController controller;
 	
 	
 	// Méthodes
