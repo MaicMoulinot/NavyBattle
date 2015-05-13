@@ -19,6 +19,8 @@ public class GameModel extends Observable {
 	private PlayerAI	player2;
 	
 	private String		gameLevel;
+	
+	private boolean		cheatMode;
 
 	public GameModel() {
 		this(10,10);
@@ -39,6 +41,13 @@ public class GameModel extends Observable {
 	public Player 	getPlayer()		{ return player1; } // Both getters return a Player object  for clarity
 	public Player	getAIPlayer()	{ return player2; } // inheritance/polymorphism
 
+	public boolean isCheatModeActivated() { return cheatMode; }
+	public void setCheatModeActive(boolean mode) {
+		cheatMode = mode;
+		setChanged();
+		notifyObservers();
+	}
+	
 	public String getGameLevel() 	{ return gameLevel; }
 	public void setGameLevel(String level)
 	{
