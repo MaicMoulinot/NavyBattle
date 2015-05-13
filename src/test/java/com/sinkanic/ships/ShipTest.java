@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sinkanic.business;
+package com.sinkanic.ships;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.sinkanic.business.Cell;
 import com.sinkanic.ships.PatrolBoat;
 import com.sinkanic.ships.Ship;
 
@@ -21,7 +22,7 @@ import com.sinkanic.ships.Ship;
  * @author humanbooster
  *
  */
-public class BoatTest {
+public class ShipTest {
 	
 	private Ship boat;
 

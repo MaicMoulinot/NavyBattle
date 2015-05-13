@@ -1,11 +1,13 @@
-package com.sinkanic.business;
+package com.sinkanic;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import com.sinkanic.ships.ShipTest;
+
 @RunWith(Suite.class)
-@SuiteClasses({ BoatTest.class })
+@SuiteClasses({ ShipTest.class })
 public class AllTests {
 
 }
