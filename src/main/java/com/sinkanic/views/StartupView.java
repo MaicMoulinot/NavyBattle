@@ -4,15 +4,17 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.sinkanic.views.components.BasicView;
+import com.sinkanic.views.components.SView;
 import com.sinkanic.views.components.JButtonDemarrer;
 import com.sinkanic.views.components.QuitButton;
 
-public class StartupView extends BasicView {
+public class StartupView extends SView implements Observer {
 
 	/**
 	 * 
@@ -29,6 +31,7 @@ public class StartupView extends BasicView {
 	}
 	private void initUI() {
 		setLayout(new GridBagLayout());
+		setVisible(false);
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -60,6 +63,13 @@ public class StartupView extends BasicView {
 		add(new QuitButton(), gbc);
 		
 		validate();
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		System.out.println("StartupView.update()");
+		
 	}
 
 }

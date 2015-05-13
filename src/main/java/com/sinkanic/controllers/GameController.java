@@ -1,10 +1,12 @@
 package com.sinkanic.controllers;
 
 import com.sinkanic.models.GameModel;
+import com.sinkanic.views.components.SView;
 
 public class GameController {
 
 	GameModel	model;
+	SView	view;
 	
 	public GameController() {
 		// TODO Auto-generated constructor stub
@@ -17,6 +19,10 @@ public class GameController {
 		}
 		this.model = model;
 		return true;
+	}
+	
+	public void addView(SView view) {
+		this.view = view;
 	}
 
 }

@@ -3,7 +3,6 @@ package com.sinkanic;
 import java.awt.EventQueue;
 
 import com.sinkanic.views.FenetreDemarrage;
-import com.sinkanic.views.StartupView;
 
 public class Main {
 
@@ -14,8 +13,8 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//new FenetreDemarrage();
-					new StartupView();
+					new FenetreDemarrage();
+					//new StartupView();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
