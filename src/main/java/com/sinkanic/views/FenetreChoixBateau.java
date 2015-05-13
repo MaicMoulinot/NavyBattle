@@ -339,21 +339,21 @@ public class FenetreChoixBateau {
 	
 	private void setColorBateauChosen(Ship bateau) {
 		for (Cell cellule : bateau.getPositions()) {
-			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.getIntX(), cellule.getIntY()));
+			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.x, cellule.y));
 			bouton.setColorPlaced();
 		}
 	}
 	
 	private void setColorBateauOnMouseOver(Ship bateau) {
 		for (Cell cellule : bateau.getPositions()) {
-			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.getIntX(), cellule.getIntY()));
+			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.x, cellule.y));
 			bouton.setColorOnMouseOver();
 		}
 	}
 	
 	private void setColorUnplaced(Ship bateau) {
 		for (Cell cellule : bateau.getPositions()) {
-			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.getIntX(), cellule.getIntY()));
+			JButtonGrille bouton = (JButtonGrille) pnlGrilleJoueur.getComponent(findPosition(cellule.x, cellule.y));
 			if (!bouton.isPlaced()) {
 				bouton.setColorUnplayed();
 			}

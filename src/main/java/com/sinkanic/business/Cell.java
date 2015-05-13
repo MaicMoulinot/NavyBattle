@@ -30,26 +30,18 @@ public class Cell extends Point {
 	}
 	
 	public boolean isSamePosition(Cell testCellule) {
-		return isSamePosition((int) testCellule.getIntX(), (int) testCellule.getIntY());
+		return isSamePosition(testCellule.x, testCellule.y);
 	}
 	
 	public boolean isSamePosition(int positionHorizontal, int positionVertical) {
 		boolean resultat = false;
-		if (positionHorizontal == getIntX() && positionVertical == getIntY()) {
+		if (positionHorizontal == x && positionVertical == y) {
 			resultat = true;
 		}
 		return resultat;
 	}
 	
-	public int getIntX() {
-		return (int) getX();
-	}
-	
-	public int getIntY() {
-		return (int) getY();
-	}
-	
 	public String toString() {
-		return "(" + getIntX() + "," + getIntY() + ")";
+		return "(" + x + "," + y + ")";
 	}
 }
