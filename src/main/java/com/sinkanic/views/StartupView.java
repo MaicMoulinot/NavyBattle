@@ -4,13 +4,17 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.sinkanic.views.components.JButtonDemarrer;
+import com.sinkanic.controllers.SController;
+import com.sinkanic.controllers.StartupController;
 import com.sinkanic.views.components.QuitButton;
 import com.sinkanic.views.components.SView;
 
@@ -20,15 +24,18 @@ public class StartupView extends SView implements Observer {
 	 * 
 	 */
 	private static final long serialVersionUID = 9218826288861126393L;
+	StartupController ctrl;
 
-	public StartupView() throws HeadlessException {
-		this("Sinkanic Startup View");
+	public StartupView(StartupController ctrl) throws HeadlessException {
+		this("Sinkanic Startup View", ctrl);
 	}
 
-	public StartupView(String title) throws HeadlessException {
-		super(title);		
+	public StartupView(String title, StartupController ctrl) throws HeadlessException {
+		super(title);
+		this.ctrl = ctrl;
 		initUI();
 	}
+
 	private void initUI() {
 		setLayout(new GridBagLayout());
 		setVisible(false);
@@ -56,8 +63,13 @@ public class StartupView extends SView implements Observer {
 		
 		gbc.gridx = 0;
 		gbc.gridy = 3;
-		JButtonDemarrer btStart = new JButtonDemarrer();
-		btStart.addActionListener(controller);
+		JButton btStart = new JButton("Start");
+		btStart.addActionListener(
+				new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                ctrl.startButtonPressed(e);
+            }});
 		add(btStart, gbc);
 		
 		gbc.gridx = 1;
@@ -71,6 +83,12 @@ public class StartupView extends SView implements Observer {
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		System.out.println("StartupView.update()");
+		
+	}
+
+	@Override
+	public void bindController(SController controller) {
+		// TODO Auto-generated method stub
 		
 	}
 

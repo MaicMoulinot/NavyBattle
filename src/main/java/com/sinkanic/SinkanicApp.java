@@ -1,6 +1,7 @@
 package com.sinkanic;
 
-import com.sinkanic.controllers.GameController;
+import com.sinkanic.controllers.SController;
+import com.sinkanic.controllers.StartupController;
 import com.sinkanic.models.GameModel;
 import com.sinkanic.views.StartupView;
 import com.sinkanic.views.components.SView;
@@ -8,19 +9,20 @@ import com.sinkanic.views.components.SView;
 public class SinkanicApp {
 
 	private GameModel		gameModel;
-	private GameController 	gameController;
+	private SController 	startController;
 	private SView			startView;
 
 	public SinkanicApp() {
 		gameModel = new GameModel();
-		gameController = new GameController();
-		startView = new StartupView();
+		startController = new StartupController();
+		startView = new StartupView((StartupController) startController);
 		
-		gameController.addModel(gameModel);
-		gameController.addView(startView);
+		startController.addModel(gameModel);
+		startController.addView(startView);
 		
-		startView.bindController(gameController);
 		
+		startView.bindController(startController);
+		startView.setVisible(true);
 	
 		
 	}
