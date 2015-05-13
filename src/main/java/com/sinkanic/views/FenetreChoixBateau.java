@@ -227,6 +227,31 @@ public class FenetreChoixBateau {
 		frmGrille.getContentPane().add(btnEffacer, gbc_Effacer);
 	}
 	
+	private Ship getShipFromSelection(int cbbIndex, int x, int y) {
+		Ship shipToAdd;
+		switch (cbbIndex) {
+		case 0:
+			shipToAdd = new AircraftCarrier(x, y, rdbtnVertical.isSelected());
+
+			break;
+		case 1:
+			shipToAdd = new Battleship(x, y, rdbtnVertical.isSelected());
+
+			break;
+		case 2:
+			shipToAdd = new Submarine(x, y, rdbtnVertical.isSelected());
+			break;
+		case 3:
+			shipToAdd = new PatrolBoat(x, y, rdbtnVertical.isSelected());
+			break;
+		default:
+			shipToAdd = null;
+			break;
+		}
+		
+		return shipToAdd;
+	}
+	
 	/**
 	 * @param x int
 	 * @param y int
@@ -242,9 +267,9 @@ public class FenetreChoixBateau {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				boolean bateaucree = false;
-				Ship shipToAdd = null;
+				Ship shipToAdd = getShipFromSelection(cbbTaille.getSelectedIndex(), x, y);
 
-				switch (cbbTaille.getSelectedIndex()) {
+	/*			switch (cbbTaille.getSelectedIndex()) {
 				case 0:
 					shipToAdd = new AircraftCarrier(x, y, rdbtnVertical.isSelected());
 
@@ -262,7 +287,7 @@ public class FenetreChoixBateau {
 
 				default:
 					break;
-				}
+				}*/
 				
 				bateaucree = partie.getPlayer1().addBoatX(shipToAdd, 
 						partie.getTailleGrilleHorizontal(), 
