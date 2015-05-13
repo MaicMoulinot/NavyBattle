@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 
 import com.sinkanic.business.Game;
 import com.sinkanic.views.components.JButtonDemarrer;
-import com.sinkanic.views.components.JButtonQuitter;
+import com.sinkanic.views.components.QuitButton;
 
 public class FenetreDemarrage {
 
@@ -142,7 +142,7 @@ public class FenetreDemarrage {
 		gbc_btnDemarrer.gridy = 7;
 		frmBatailleNavale.getContentPane().add(btnDemarrer, gbc_btnDemarrer);
 		
-		JButton btnQuitterApp = new JButtonQuitter();
+		JButton btnQuitterApp = new QuitButton();
 		btnQuitterApp.setHorizontalAlignment(SwingConstants.LEFT);
 		btnQuitterApp.addMouseListener(new MouseAdapter() {
 			@Override
