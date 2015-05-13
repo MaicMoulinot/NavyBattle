@@ -269,26 +269,6 @@ public class FenetreChoixBateau {
 				boolean bateaucree = false;
 				Ship shipToAdd = getShipFromSelection(cbbTaille.getSelectedIndex(), x, y);
 
-	/*			switch (cbbTaille.getSelectedIndex()) {
-				case 0:
-					shipToAdd = new AircraftCarrier(x, y, rdbtnVertical.isSelected());
-
-					break;
-				case 1:
-					shipToAdd = new Battleship(x, y, rdbtnVertical.isSelected());
-
-					break;
-				case 2:
-					shipToAdd = new Submarine(x, y, rdbtnVertical.isSelected());
-					break;
-				case 3:
-					shipToAdd = new PatrolBoat(x, y, rdbtnVertical.isSelected());
-					break;
-
-				default:
-					break;
-				}*/
-				
 				bateaucree = partie.getPlayer1().addBoatX(shipToAdd, 
 						partie.getTailleGrilleHorizontal(), 
 						partie.getTailleGrilleVertical(), 
