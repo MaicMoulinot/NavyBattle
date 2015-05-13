@@ -48,4 +48,8 @@ public class Cell extends Point {
 	public int getIntY() {
 		return (int) getY();
 	}
+	
+	public String toString() {
+		return "(" + getIntX() + "," + getIntY() + ")";
+	}
 }
