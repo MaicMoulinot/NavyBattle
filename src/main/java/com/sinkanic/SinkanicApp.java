@@ -19,6 +19,7 @@ public class SinkanicApp {
 		gameController.addModel(gameModel);
 		gameController.addView(startView);
 		
+		startView.bindController(gameController);
 		
 	
 		

@@ -10,9 +10,9 @@ import java.util.Observer;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.sinkanic.views.components.SView;
 import com.sinkanic.views.components.JButtonDemarrer;
 import com.sinkanic.views.components.QuitButton;
+import com.sinkanic.views.components.SView;
 
 public class StartupView extends SView implements Observer {
 
@@ -56,7 +56,9 @@ public class StartupView extends SView implements Observer {
 		
 		gbc.gridx = 0;
 		gbc.gridy = 3;
-		add(new JButtonDemarrer(), gbc);
+		JButtonDemarrer btStart = new JButtonDemarrer();
+		btStart.addActionListener(controller);
+		add(btStart, gbc);
 		
 		gbc.gridx = 1;
 		gbc.gridy = 3;

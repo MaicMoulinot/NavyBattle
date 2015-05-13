@@ -1,12 +1,11 @@
 package com.sinkanic.models;
 
 import java.awt.Dimension;
-import java.util.Observable;
 
 import com.sinkanic.business.Player;
 import com.sinkanic.business.PlayerAI;
 
-public class GameModel extends Observable {
+public class GameModel extends SModel {
 	
 	// Attributs
 	public final static String BIDON = "bidon";

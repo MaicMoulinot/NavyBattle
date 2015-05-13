@@ -3,21 +3,21 @@ package com.sinkanic.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.sinkanic.models.GameModel;
+import com.sinkanic.models.SModel;
 import com.sinkanic.views.components.SView;
 
-public class GameController implements ActionListener{
+public abstract class SController implements ActionListener {
 
-	GameModel	model;
-	SView	view;
+	protected SModel	model;
+	protected SView		view;
 	
-	public GameController() {
+	public SController() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean addModel(GameModel model) {
+	public boolean addModel(SModel model) {
 		if (this.model != null) {
-			System.out.println("GameModel.addModel() : already have a bound model.");	
+			System.out.println("SModel.addModel() : already have a bound model.");	
 			return false;
 		}
 		this.model = model;
