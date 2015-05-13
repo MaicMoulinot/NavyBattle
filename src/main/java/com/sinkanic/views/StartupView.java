@@ -24,7 +24,6 @@ public class StartupView extends SView implements Observer {
 	 * 
 	 */
 	private static final long serialVersionUID = 9218826288861126393L;
-	StartupController ctrl;
 
 	public StartupView(StartupController ctrl) throws HeadlessException {
 		this("Sinkanic Startup View", ctrl);
@@ -32,13 +31,12 @@ public class StartupView extends SView implements Observer {
 
 	public StartupView(String title, StartupController ctrl) throws HeadlessException {
 		super(title);
-		this.ctrl = ctrl;
+		this.controller = ctrl;
 		initUI();
 	}
 
 	private void initUI() {
 		setLayout(new GridBagLayout());
-		setVisible(false);
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -59,6 +57,7 @@ public class StartupView extends SView implements Observer {
 		JTextField tfInputName = new JTextField();
 		gbc.gridx = 1;
 		gbc.gridy = 1;
+		tfInputName.setText("player1name");
 		add(tfInputName, gbc);
 		
 		gbc.gridx = 0;
@@ -68,7 +67,7 @@ public class StartupView extends SView implements Observer {
 				new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-                ctrl.startButtonPressed(e);
+            	((StartupController)controller).startButtonPressed(tfInputName.getText()); //cast generic SController to view-specific controller
             }});
 		add(btStart, gbc);
 		
@@ -76,12 +75,12 @@ public class StartupView extends SView implements Observer {
 		gbc.gridy = 3;
 		add(new QuitButton(), gbc);
 		
+
 		validate();
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		System.out.println("StartupView.update()");
 		
 	}

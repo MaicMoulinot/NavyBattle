@@ -1,15 +1,22 @@
 package com.sinkanic.controllers;
 
-import java.awt.event.ActionEvent;
+import com.sinkanic.business.Player;
+import com.sinkanic.models.GameModel;
 
 public class StartupController extends SController {
 
 	public StartupController() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-	public void startButtonPressed(ActionEvent e) {
-		System.out.println("Start button pressed !!");
+	public void startButtonPressed(Object o) {
+		System.out.println(o);
+		Player newPlayer = new Player((String)o);
+		((GameModel)this.model).setPlayer(newPlayer);
+		System.out.println("Start button pressed !! PlayerName=" + ((GameModel)this.model).getPlayer().getName());
+	}
+	
+	public void initializeModel() {
 	}
 
 }

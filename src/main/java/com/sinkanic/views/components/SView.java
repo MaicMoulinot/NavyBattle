@@ -9,7 +9,7 @@ import com.sinkanic.controllers.SController;
 public abstract class SView extends JFrame {
 
 	private static final long serialVersionUID = 5782287033396317471L;
-
+	protected SController	controller;
 	
 	public SView() throws HeadlessException {
 		this("Sinkanic Basic View");
@@ -25,6 +25,7 @@ public abstract class SView extends JFrame {
 		setTitle(title);
 		setSize(width, height);
 		setResizable(false);
+		setVisible(true);
 		setLocationRelativeTo(null);
 	}
 	

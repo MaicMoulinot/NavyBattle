@@ -40,24 +40,30 @@ public class GameModel extends SModel {
 
 	public Player 	getPlayer()		{ return player1; } // Both getters return a Player object  for clarity
 	public Player	getAIPlayer()	{ return player2; } // inheritance/polymorphism
+	public void		setPlayer(Player p) {
+		player1 = p;
+		setChangedAndNotify();
+	}
 
 	public boolean isCheatModeActivated() { return cheatMode; }
 	public void setCheatModeActive(boolean mode) {
 		cheatMode = mode;
-		setChanged();
-		notifyObservers();
+		setChangedAndNotify();
 	}
 	
 	public String getGameLevel() 	{ return gameLevel; }
-	public void setGameLevel(String level)
-	{
+	public void setGameLevel(String level) {
 		gameLevel = level;
-		setChanged();
-		notifyObservers();
+		setChangedAndNotify();
 	}
 	
 	private void initialize() {
 		System.out.println("GameModel.initialize() : to be implemented.");
 	}
 	
+	private void setChangedAndNotify()
+	{
+		setChanged();
+		notifyObservers();
+	}
 }
