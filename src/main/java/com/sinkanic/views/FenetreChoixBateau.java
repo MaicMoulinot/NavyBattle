@@ -310,7 +310,7 @@ public class FenetreChoixBateau {
 			}
 			
 			private Ship tryBoat() {
-				return bateau = partie.getPlayer1().tryBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 5/*Ship.getTailleBateau(cbbTaille.getSelectedItem().toString())*/, rdbtnVertical.isSelected(), x, y);
+				return bateau = partie.getPlayer1().tryBoat(partie.getTailleGrilleHorizontal(), partie.getTailleGrilleVertical(), 3/*Ship.getTailleBateau(cbbTaille.getSelectedItem().toString())*/, rdbtnVertical.isSelected(), x, y);
 			}
 			
 		});
