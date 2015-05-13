@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 
 import com.sinkanic.business.Game;
 import com.sinkanic.views.components.JButtonDemarrer;
-import com.sinkanic.views.components.JButtonQuitter;
+import com.sinkanic.views.components.QuitButton;
 
 public class FenetrePartie {
 
@@ -111,7 +111,7 @@ public class FenetrePartie {
 		gbc_btnNouvelle.gridy = 5;
 		frmPartie.getContentPane().add(btnNouvelle, gbc_btnNouvelle);
 
-		JButton btnQuitter = new JButtonQuitter();
+		JButton btnQuitter = new QuitButton();
 		btnQuitter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
