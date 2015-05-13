@@ -114,7 +114,7 @@ public class Player {
 		}
 		return resultat;
 	}
-	public boolean addBoat(Ship shipToAdd, int gridCols, int gridRows, boolean isVertical, int x, int y) {
+	public boolean addBoat(Ship shipToAdd, int gridCols, int gridRows) {
 		if (!isBoatAddable(shipToAdd, gridRows, gridCols))
 			return false;
 		fleet.add(shipToAdd);
