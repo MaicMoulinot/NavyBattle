@@ -55,7 +55,7 @@ public class Player {
 	 */
 	public String checkGuess(int testX, int testY) {
 		String resultat = Ship.MISSED;
-		for (Ship bateau : getFlotte()) {
+		for (Ship bateau : getFleet()) {
 			resultat = bateau.checkGuess(testX, testY);
 			if (!resultat.matches(Ship.MISSED)) {
 				break;
@@ -66,7 +66,7 @@ public class Player {
 	
 	public ArrayList<Cell> getAllPositions() {
 		ArrayList<Cell> listeCellules = new ArrayList<Cell>();
-		for (Ship bateau : getFlotte()) {
+		for (Ship bateau : getFleet()) {
 			for (Cell cellule : bateau.getPositions()) {
 				listeCellules.add(cellule);
 			}
@@ -74,13 +74,13 @@ public class Player {
 		return listeCellules;
 	}
 
-	public ArrayList<Ship> getFlotte() {
+	public ArrayList<Ship> getFleet() {
 		return fleet;
 	}
 	
 	public ArrayList<String> afficheBoats() {
 		ArrayList<String> resultat = new ArrayList<String>();
-		for (Ship bateau : getFlotte()) {
+		for (Ship bateau : getFleet()) {
 			resultat.add(bateau.displayCheatTextEnemyPositions());
 		}
 		return resultat;
@@ -106,7 +106,7 @@ public class Player {
 	
 	public boolean isDead() {
 		boolean resultat = true;
-		for (Ship bateau : getFlotte()) {
+		for (Ship bateau : getFleet()) {
 			if (!bateau.isSunk()) {
 				resultat = false;
 				break;
@@ -114,38 +114,11 @@ public class Player {
 		}
 		return resultat;
 	}
-	public boolean addBoatX(Ship shipToAdd, int gridCols, int gridRows, boolean isVertical, int x, int y) {
+	public boolean addBoat(Ship shipToAdd, int gridCols, int gridRows, boolean isVertical, int x, int y) {
 		if (!isBoatAddable(shipToAdd, gridRows, gridCols))
 			return false;
 		fleet.add(shipToAdd);
 		return true;
-	}
-	@Deprecated
-	public Ship addBoat(int tailleGrilleHorizontal, int tailleGrilleVertical, int tailleBateau, boolean isVertical, int firstCellX, int firstCellY) {
-		// instantiate proper ship type
-		Ship bateau = null;
-		switch (tailleBateau) {
-		case 5:
-			bateau = new AircraftCarrier(firstCellX, firstCellY, isVertical);
-			break;
-		case 4:
-			bateau = new Battleship(firstCellX, firstCellY, isVertical);
-			break;
-		case 3:
-			bateau = new Submarine(firstCellX, firstCellY, isVertical);
-			break;
-		case 2:
-			bateau = new PatrolBoat(firstCellX, firstCellY, isVertical);
-			break;
-		default:
-			break;
-		}
-		if (isBoatAddable(bateau, tailleGrilleHorizontal, tailleGrilleVertical)) {
-			fleet.add(bateau);
-		} else {
-			bateau = null;
-		}
-		return bateau;
 	}
 
 	@Deprecated

@@ -269,7 +269,7 @@ public class FenetreChoixBateau {
 				boolean bateaucree = false;
 				Ship shipToAdd = getShipFromSelection(cbbTaille.getSelectedIndex(), x, y);
 
-				bateaucree = partie.getPlayer1().addBoatX(shipToAdd, 
+				bateaucree = partie.getPlayer1().addBoat(shipToAdd, 
 						partie.getTailleGrilleHorizontal(), 
 						partie.getTailleGrilleVertical(), 
 						rdbtnVertical.isSelected(), x, y);	

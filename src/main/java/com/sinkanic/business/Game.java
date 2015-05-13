@@ -138,7 +138,7 @@ public class Game {
 	}
 
 	public void setFleetAI() {
-		for (Ship bateau : getPlayer1().getFlotte()) {
+		for (Ship bateau : getPlayer1().getFleet()) {
 			addRandomBoatOnPlayerAI(bateau.getShipSize());
 		}
 	}
