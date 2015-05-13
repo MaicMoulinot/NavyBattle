@@ -9,14 +9,8 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.sinkanic.business.Cell;
-import com.sinkanic.ships.PatrolBoat;
-import com.sinkanic.ships.Ship;
 
 /**
  * @author humanbooster
@@ -24,28 +18,14 @@ import com.sinkanic.ships.Ship;
  */
 public class ShipTest {
 	
-	private Ship boat;
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+	private Ship ship;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		boat = new PatrolBoat(0, 0, false); 
+		ship = new PatrolBoat(0, 0, false); 
 	}
 
 	/**
@@ -53,14 +33,15 @@ public class ShipTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		ship = null;
 	}
 
 	/**
 	 * Test method for {@link com.sinkanic.business.Ship#Boat(boolean, int, com.sinkanic.business.Cell)}.
 	 */
 	@Test
-	public final void testBoatBooleanIntCellule() {
-		assertFalse("test constructor Boat", boat.getPositions().isEmpty());
+	public final void testShipBooleanIntCellule() {
+		assertFalse("test constructor Boat", ship.getPositions().isEmpty());
 	}
 
 	/**
@@ -68,8 +49,8 @@ public class ShipTest {
 	 */
 	@Test
 	public final void testCheckGuess() {
-		assertEquals(boat.checkGuess(0, 0), Ship.HIT);
-		assertNotEquals(boat.checkGuess(9, 9), Ship.HIT);
+		assertEquals(ship.checkGuess(0, 0), Ship.HIT);
+		assertNotEquals(ship.checkGuess(9, 9), Ship.HIT);
 	}
 
 	/**
@@ -77,8 +58,8 @@ public class ShipTest {
 	 */
 	@Test
 	public final void testIsTouched() {
-		boat.checkGuess(0, 0);
-		assertTrue(boat.isHit(0, 0));
+		ship.checkGuess(0, 0);
+		assertTrue(ship.isHit(0, 0));
 	}
 
 	/**
@@ -86,9 +67,9 @@ public class ShipTest {
 	 */
 	@Test
 	public final void testIsDestroyed() {
-		boat.checkGuess(0, 0);
-		boat.checkGuess(1, 0);
-		assertTrue(boat.isSunk());
+		ship.checkGuess(0, 0);
+		ship.checkGuess(1, 0);
+		assertTrue(ship.isSunk());
 	}
 
 }
