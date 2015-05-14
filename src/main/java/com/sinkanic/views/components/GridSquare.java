@@ -24,15 +24,15 @@ public class GridSquare extends JButton {
 		gridY = y;
 		blackBorder = new LineBorder(Color.BLACK);
 		redBorder = new LineBorder(Color.RED);
-		defaultBackgroundColor = new Color(getBackground().getRGB());
-
+		defaultBackgroundColor = new Color(51, 153, 255);
+		setBackground(defaultBackgroundColor);
 		setPreferredSize(new Dimension(40, 40));
 		setBorder(blackBorder);
 		setOpaque(true);
 	}
 	
 	public void setHoverBackground() {
-		setBackground(Color.DARK_GRAY);
+		setBackground(Color.BLUE);
 		setBorder(redBorder);
 	}
 	

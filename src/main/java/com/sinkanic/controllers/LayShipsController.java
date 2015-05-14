@@ -35,18 +35,14 @@ public class LayShipsController extends SController implements MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		JButton source = (JButton) e.getSource();
-		System.out.println(source.getClass().getSimpleName());
+		System.out.println( ((JButton) e.getSource()).getClass().getSimpleName());
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		JButton source = (JButton) e.getSource();
-		System.out.println(source.getClass().getSimpleName());
 		if (e.getSource().getClass().getSimpleName().equals("GridSquare")) {
-			GridSquare src = (GridSquare) e.getSource();
-			src.setHoverBackground();
+			((GridSquare) e.getSource()).setHoverBackground();
 		}
 			
 	}
@@ -54,8 +50,7 @@ public class LayShipsController extends SController implements MouseListener{
 	@Override
 	public void mouseExited(MouseEvent e) {
 		if (e.getSource().getClass().getSimpleName().equals("GridSquare")) {
-			GridSquare src = (GridSquare) e.getSource();
-			src.resetBackground();
+			((GridSquare) e.getSource()).resetBackground();
 		}		
 	}
 	@Override
