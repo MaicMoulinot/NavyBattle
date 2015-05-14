@@ -19,8 +19,6 @@ public abstract class SView extends JFrame {
 		setViewProperties(title, 300, 200);
 	}
 	
-	public abstract void bindController(SController controller);
-
 	private void setViewProperties(String title, int width, int height) {
 		setTitle(title);
 		setSize(width, height);

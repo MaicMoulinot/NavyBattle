@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.sinkanic.controllers.SController;
 import com.sinkanic.controllers.StartupController;
 import com.sinkanic.views.components.QuitButton;
 import com.sinkanic.views.components.SView;
@@ -63,11 +62,12 @@ public class StartupView extends SView implements Observer {
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		JButton btStart = new JButton("Start");
+		btStart.setActionCommand("START");
 		btStart.addActionListener(
 				new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-            	((StartupController)controller).startButtonPressed(tfInputName.getText()); //cast generic SController to view-specific controller
+            	((StartupController)controller).startButtonPressed(tfInputName.getText()); //recast generic SController to view-specific controller
             }});
 		add(btStart, gbc);
 		
@@ -85,10 +85,5 @@ public class StartupView extends SView implements Observer {
 		
 	}
 
-	@Override
-	public void bindController(SController controller) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
