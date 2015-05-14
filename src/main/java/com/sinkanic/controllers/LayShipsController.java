@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
+import com.sinkanic.business.Player;
 import com.sinkanic.models.GameModel;
 import com.sinkanic.views.LayShipsView;
 import com.sinkanic.views.components.GridSquare;
@@ -23,6 +24,13 @@ public class LayShipsController extends SController implements MouseListener{
 	
 	public void addView(LayShipsView view) {
 		this.view = view;
+	}
+	
+	public void setPlayerName(String n)
+	{
+		Player newPlayer = new Player(n);
+		((GameModel)this.model).setPlayer(newPlayer);
+		System.out.println("Start button pressed !! PlayerName=" + ((GameModel)this.model).getPlayer().getName());
 	}
 	
 	@Override

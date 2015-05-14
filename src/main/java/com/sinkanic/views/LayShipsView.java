@@ -7,6 +7,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.sinkanic.controllers.LayShipsController;
@@ -54,6 +55,9 @@ public class LayShipsView extends JFrame implements Observer{
 		add(rightPanel);
 		
 		validate();
+		
+		 String name = JOptionPane.showInputDialog(this, "What's your name?");
+		 controller.setPlayerName(name);
 	}
 	private void setWindowProperties(String title, int width, int height) {
 		setTitle(title);
@@ -73,8 +77,7 @@ public class LayShipsView extends JFrame implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("LayShipsView.update()");
 	}
 
 }

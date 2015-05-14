@@ -19,16 +19,19 @@ public class SinkanicApp {
 	}
 	
 	private void run() {
+		gameModel = new GameModel();
 		startController = new StartupController();
-		startView = new StartupView(startController);
+		//startView = new StartupView(startController);
 		
-		startController.addModel(gameModel);
-		startController.addView(startView);
+		//startController.addModel(gameModel);
+		//startController.addView(startView);
 		
 		LayShipsController layShipsController = new LayShipsController();
-		LayShipsView layShips = new LayShipsView(layShipsController);
 		
 		layShipsController.addModel(gameModel);
+		
+		
+		LayShipsView layShips = new LayShipsView(layShipsController);
 		layShipsController.addView(layShips);
 		
 	}
