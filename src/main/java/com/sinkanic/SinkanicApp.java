@@ -13,14 +13,14 @@ public class SinkanicApp {
 	}
 	
 	private void run() {
-		gameModel = new GameModel();
+		gameModel = GameModel.getInstance();
 		//startController = new StartupController();
 		//startView = new StartupView(startController);
 		
 		//startController.addModel(gameModel);
 		//startController.addView(startView);
-		
-		LayShipsController layShipsController = new LayShipsController(gameModel);
+		System.out.println("SinkanicApp.run()  model=" + gameModel);
+		LayShipsController layShipsController = new LayShipsController(GameModel.getInstance());
 		
 		//layShipsController.addModel(gameModel);
 

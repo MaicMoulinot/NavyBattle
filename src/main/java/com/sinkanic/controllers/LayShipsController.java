@@ -22,12 +22,14 @@ public class LayShipsController extends SController implements MouseListener{
 	
 	public void updatePlayer(String n)
 	{
+		System.out.println(model);
 		Player newPlayer = new Player(n);
 		try {
-			((GameModel)this.model).setPlayer(newPlayer);
+			
+			this.model.setPlayer(newPlayer);
 		} catch (Exception e) {
-			this.model = new GameModel();
-			((GameModel)this.model).setPlayer(newPlayer);
+			//this.model = new GameModel();
+			this.model.setPlayer(newPlayer);
 			System.out.println("UNDEFINED MODEL: updatePlayer(): model = " + this.model);
 			System.out.println("Start button pressed !! PlayerName=" + ((GameModel)this.model).getPlayer().getName());
 		}
