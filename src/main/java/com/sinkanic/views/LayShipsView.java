@@ -3,18 +3,18 @@ package com.sinkanic.views;
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.sinkanic.controllers.LayShipsController;
+import com.sinkanic.models.GameModel;
+import com.sinkanic.models.SModel;
 import com.sinkanic.views.components.SView;
 import com.sinkanic.views.components.ShipListPanel;
 import com.sinkanic.views.components.SquareGridPanel;
 
-public class LayShipsView extends SView implements Observer{
+public class LayShipsView extends SView {
 
 	/**
 	 * 
@@ -25,23 +25,19 @@ public class LayShipsView extends SView implements Observer{
 	private JPanel	leftPanel;
 	
 	private LayShipsController	controller;
-	
-	public LayShipsView(LayShipsController controller) {
-		this("BattleShips Basic Window", controller);
+
+	public LayShipsView(LayShipsController controller, SModel model) {
+		this("Sinkanic - Lay Ships ", 900, 600, controller, model);
 	}
-	
-	public LayShipsView(String title, LayShipsController controller){
-		this(title, 900, 600, controller);
-	}
-	
-	public void bindController(LayShipsController controller) {
-		this.controller = controller;
-	}
-	
-	public LayShipsView(String title, int width, int height, LayShipsController controller){
+
+	public LayShipsView(String title, int width, int height, LayShipsController controller, SModel model) {
+		
+		super(title, model);
+		
 		setWindowProperties(title, width, height);
 
 		this.controller = controller; //bind controller
+		GameModel.getInstance().addObserver(this);
 
 		rightPanel = new JPanel(new GridBagLayout());
 		rightPanel.setBackground(Color.LIGHT_GRAY);
@@ -89,11 +85,6 @@ public class LayShipsView extends SView implements Observer{
 	private void prepareGUI() {
 		rightPanel.add(new SquareGridPanel(controller));
 		leftPanel.add(new ShipListPanel(controller));
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		System.out.println("LayShipsView.update()");
 	}
 
 }

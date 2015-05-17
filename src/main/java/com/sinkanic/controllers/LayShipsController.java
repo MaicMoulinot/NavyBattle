@@ -7,14 +7,13 @@ import javax.swing.JButton;
 
 import com.sinkanic.business.Player;
 import com.sinkanic.models.GameModel;
-import com.sinkanic.views.LayShipsView;
 import com.sinkanic.views.components.GridSquare;
 
 public class LayShipsController extends SController implements MouseListener{
 	
 
-	public LayShipsController(GameModel model, LayShipsView view) {
-		super(model, view);
+	public LayShipsController(GameModel model) {
+		super(model);
 	}
 	
 	public void updatePlayer(String n)
@@ -22,7 +21,6 @@ public class LayShipsController extends SController implements MouseListener{
 		Player newPlayer = new Player(n);
 		((GameModel)modelRef).setPlayer(newPlayer);
 		System.out.println("updatePlayer() countObservers=" + modelRef.countObservers());
-		System.out.println("updatePlayer() view=" + view);
 	}
 	
 	public void setGameLevel(String n) {

@@ -19,12 +19,13 @@ public class SinkanicApp {
 		
 		
 		System.out.println("SinkanicApp.run()  model=" + gameModel);
-		controller = new LayShipsController(gameModel, view);
-		view = new LayShipsView(controller);
+		
+		controller = new LayShipsController(gameModel);
+		view = new LayShipsView(controller, gameModel);
+		
+		controller.addView(view); // useless, but for now still keeping reference to view.
 
-		
-		
-		//layShipsController.addView(new LayShipsView(layShipsController));
+
 		
 	}
 
