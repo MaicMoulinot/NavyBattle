@@ -9,15 +9,24 @@ import com.sinkanic.views.components.SView;
 
 public abstract class SController implements ActionListener {
 
+	// protected Attributes
 	protected SModel	modelRef;
 	protected SView		view;
 	
-	@Deprecated
-	public SController() {}
-	
-	public SController(SModel model) {
-		System.out.println("SController(SModel) model = " + model);
+
+	public SController(SModel model, SView view) {
 		this.modelRef = model;
+		this.view = view;
+		//threadingDelay(1500);
+	}
+	
+	private void threadingDelay(int delay) {
+		try {
+			Thread.currentThread();
+			Thread.sleep(delay);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean addModel(SModel model) {
@@ -30,6 +39,7 @@ public abstract class SController implements ActionListener {
 		this.view = view;
 		System.out.println("SController.addView() model = " + modelRef);
 		modelRef.addObserver((Observer) view);
+		System.out.println("SController.addView() countObservers=" + modelRef.countObservers());
 	}
 
 	@Override

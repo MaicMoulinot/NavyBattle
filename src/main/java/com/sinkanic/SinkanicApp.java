@@ -7,6 +7,8 @@ import com.sinkanic.views.LayShipsView;
 public class SinkanicApp {
 
 	private GameModel			gameModel;
+	private LayShipsView		view;
+	private LayShipsController	controller;
 
 	public SinkanicApp() {
 		run();
@@ -14,19 +16,15 @@ public class SinkanicApp {
 	
 	private void run() {
 		gameModel = GameModel.getInstance();
-		//startController = new StartupController();
-		//startView = new StartupView(startController);
 		
-		//startController.addModel(gameModel);
-		//startController.addView(startView);
+		
 		System.out.println("SinkanicApp.run()  model=" + gameModel);
-		LayShipsController layShipsController = new LayShipsController(GameModel.getInstance());
-		
-		//layShipsController.addModel(gameModel);
+		controller = new LayShipsController(gameModel, view);
+		view = new LayShipsView(controller);
 
 		
-		LayShipsView layShips = new LayShipsView(layShipsController);
-		layShipsController.addView(layShips);
+		
+		//layShipsController.addView(new LayShipsView(layShipsController));
 		
 	}
 
