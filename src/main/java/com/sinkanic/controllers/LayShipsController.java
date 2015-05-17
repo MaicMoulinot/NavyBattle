@@ -20,7 +20,6 @@ public class LayShipsController extends SController implements MouseListener{
 	{
 		Player newPlayer = new Player(n);
 		((GameModel)modelRef).setPlayer(newPlayer);
-		System.out.println("updatePlayer() countObservers=" + modelRef.countObservers());
 	}
 	
 	public void setGameLevel(String n) {

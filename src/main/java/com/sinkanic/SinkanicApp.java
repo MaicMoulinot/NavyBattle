@@ -17,9 +17,6 @@ public class SinkanicApp {
 	private void run() {
 		gameModel = GameModel.getInstance();
 		
-		
-		System.out.println("SinkanicApp.run()  model=" + gameModel);
-		
 		controller = new LayShipsController(gameModel);
 		view = new LayShipsView(controller, gameModel);
 		

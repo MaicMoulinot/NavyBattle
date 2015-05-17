@@ -27,7 +27,7 @@ public abstract class SController implements ActionListener {
 		this.view = view;
 		System.out.println("SController.addView() view = " + view);
 		//modelRef.addObserver((Observer) view);
-		System.out.println("SController.addView() countObservers=" + modelRef.countObservers());
+		//System.out.println("SController.addView() countObservers=" + modelRef.countObservers());
 	}
 
 	@Override
