@@ -12,8 +12,8 @@ public class StartupController extends SController {
 	public void startButtonPressed(Object o) {
 		System.out.println(o);
 		Player newPlayer = new Player((String)o);
-		((GameModel)this.model).setPlayer(newPlayer);
-		System.out.println("Start button pressed !! PlayerName=" + ((GameModel)this.model).getPlayer().getName());
+		((GameModel)this.modelRef).setPlayer(newPlayer);
+		System.out.println("Start button pressed !! PlayerName=" + ((GameModel)this.modelRef).getPlayer().getName());
 	}
 	
 	public void initializeModel() {

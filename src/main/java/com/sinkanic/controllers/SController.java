@@ -9,7 +9,7 @@ import com.sinkanic.views.components.SView;
 
 public abstract class SController implements ActionListener {
 
-	protected SModel	model;
+	protected SModel	modelRef;
 	protected SView		view;
 	
 	@Deprecated
@@ -17,19 +17,19 @@ public abstract class SController implements ActionListener {
 	
 	public SController(SModel model) {
 		System.out.println("SController(SModel) model = " + model);
-		this.model = model;
+		this.modelRef = model;
 	}
 	
 	public boolean addModel(SModel model) {
 		System.out.println("SModel.addModel() : " + model);	
-		this.model = model;
+		this.modelRef = model;
 		return true;
 	}
 	
 	public void addView(SView view) {
 		this.view = view;
-		System.out.println(model);
-		model.addObserver((Observer) view);
+		System.out.println("SController.addView() model = " + modelRef);
+		modelRef.addObserver((Observer) view);
 	}
 
 	@Override

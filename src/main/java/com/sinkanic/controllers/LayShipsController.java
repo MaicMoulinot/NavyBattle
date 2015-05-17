@@ -11,32 +11,24 @@ import com.sinkanic.views.LayShipsView;
 import com.sinkanic.views.components.GridSquare;
 
 public class LayShipsController extends SController implements MouseListener{
-
-	GameModel		model;
-	LayShipsView	view;
 	
 
 	public LayShipsController(GameModel model) {
 		super(model);
+		System.out.println("LayShipsController(GameModel) param = " + model);
+		System.out.println("LayShipsController(GameModel) attribute = " + this.modelRef);
 	}
 	
 	public void updatePlayer(String n)
 	{
-		System.out.println(model);
+		System.out.println("updatePlayer() attr = " + this.modelRef);
+		System.out.println("updatePlayer() singleton = " + GameModel.getInstance());
 		Player newPlayer = new Player(n);
-		try {
-			
-			this.model.setPlayer(newPlayer);
-		} catch (Exception e) {
-			//this.model = new GameModel();
-			this.model.setPlayer(newPlayer);
-			System.out.println("UNDEFINED MODEL: updatePlayer(): model = " + this.model);
-			System.out.println("Start button pressed !! PlayerName=" + ((GameModel)this.model).getPlayer().getName());
-		}
+		((GameModel)modelRef).setPlayer(newPlayer);
 	}
 	
 	public void setGameLevel(String n) {
-		((GameModel)this.model).setGameLevel(n);
+		((GameModel)modelRef).setGameLevel(n);
 	}
 	
 	@Override
