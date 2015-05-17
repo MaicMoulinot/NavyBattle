@@ -12,23 +12,24 @@ public abstract class SController implements ActionListener {
 	protected SModel	model;
 	protected SView		view;
 	
-	public SController() {
-		// TODO Auto-generated constructor stub
+	@Deprecated
+	public SController() {}
+	
+	public SController(SModel model) {
+		System.out.println("SController(SModel) model = " + model);
+		this.model = model;
 	}
 	
 	public boolean addModel(SModel model) {
-		if (this.model != null) {
-			System.out.println("SModel.addModel() : already have a bound model.");	
-			return false;
-		}
+		System.out.println("SModel.addModel() : " + model);	
 		this.model = model;
 		return true;
 	}
 	
 	public void addView(SView view) {
 		this.view = view;
-		if (model != null)
-			model.addObserver((Observer) view);
+		System.out.println(model);
+		model.addObserver((Observer) view);
 	}
 
 	@Override

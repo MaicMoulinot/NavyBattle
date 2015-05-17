@@ -9,7 +9,6 @@ public class SinkanicApp {
 	private GameModel			gameModel;
 
 	public SinkanicApp() {
-		gameModel = new GameModel();
 		run();
 	}
 	
@@ -21,10 +20,10 @@ public class SinkanicApp {
 		//startController.addModel(gameModel);
 		//startController.addView(startView);
 		
-		LayShipsController layShipsController = new LayShipsController();
+		LayShipsController layShipsController = new LayShipsController(gameModel);
 		
-		layShipsController.addModel(gameModel);
-		
+		//layShipsController.addModel(gameModel);
+
 		
 		LayShipsView layShips = new LayShipsView(layShipsController);
 		layShipsController.addView(layShips);

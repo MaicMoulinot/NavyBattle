@@ -15,22 +15,26 @@ public class LayShipsController extends SController implements MouseListener{
 	GameModel		model;
 	LayShipsView	view;
 	
-	public LayShipsController() {
-	}
 
-	public void addModel(GameModel model) {
-		this.model = model;
+	public LayShipsController(GameModel model) {
+		super(model);
 	}
 	
-	public void addView(LayShipsView view) {
-		this.view = view;
-	}
-	
-	public void setPlayerName(String n)
+	public void updatePlayer(String n)
 	{
 		Player newPlayer = new Player(n);
-		((GameModel)this.model).setPlayer(newPlayer);
-		System.out.println("Start button pressed !! PlayerName=" + ((GameModel)this.model).getPlayer().getName());
+		try {
+			((GameModel)this.model).setPlayer(newPlayer);
+		} catch (Exception e) {
+			this.model = new GameModel();
+			((GameModel)this.model).setPlayer(newPlayer);
+			System.out.println("UNDEFINED MODEL: updatePlayer(): model = " + this.model);
+			System.out.println("Start button pressed !! PlayerName=" + ((GameModel)this.model).getPlayer().getName());
+		}
+	}
+	
+	public void setGameLevel(String n) {
+		((GameModel)this.model).setGameLevel(n);
 	}
 	
 	@Override

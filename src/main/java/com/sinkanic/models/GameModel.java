@@ -39,29 +39,34 @@ public class GameModel extends SModel {
 	public int getGridCols()		{ return gridSize.width; }	// this may be useless. 
 
 	public Player 	getPlayer()		{ return player1; } // Both getters return a Player object  for clarity
-	public Player	getAIPlayer()	{ return player2; } // inheritance/polymorphism
+	public Player	getAIPlayer()	{ return player2; } // polymorphism
 	public void		setPlayer(Player p) {
 		player1 = p;
-		setChangedAndNotify();
+		propagateChanges();
 	}
 
 	public boolean isCheatModeActivated() { return cheatMode; }
 	public void setCheatModeActive(boolean mode) {
 		cheatMode = mode;
-		setChangedAndNotify();
+		propagateChanges();
 	}
 	
 	public String getGameLevel() 	{ return gameLevel; }
 	public void setGameLevel(String level) {
 		gameLevel = level;
-		setChangedAndNotify();
+		propagateChanges();
+	}
+	
+	public void setPlayerName(String name) {
+		player1.setName(name);
+		propagateChanges();
 	}
 	
 	private void initialize() {
 		System.out.println("GameModel.initialize() : to be implemented.");
 	}
 	
-	private void setChangedAndNotify()
+	private void propagateChanges()
 	{
 		setChanged();
 		notifyObservers();

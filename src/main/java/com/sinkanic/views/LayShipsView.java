@@ -6,15 +6,15 @@ import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.sinkanic.controllers.LayShipsController;
+import com.sinkanic.views.components.SView;
 import com.sinkanic.views.components.ShipListPanel;
 import com.sinkanic.views.components.SquareGridPanel;
 
-public class LayShipsView extends JFrame implements Observer{
+public class LayShipsView extends SView implements Observer{
 
 	/**
 	 * 
@@ -56,9 +56,25 @@ public class LayShipsView extends JFrame implements Observer{
 		
 		validate();
 		
+		promptGameSettings();
+}
+	
+	private void promptGameSettings() {
 		 String name = JOptionPane.showInputDialog(this, "What's your name?");
-		 controller.setPlayerName(name);
+		 controller.updatePlayer(name);
+		 
+		 Object[] props = {"Noob", "Medium", "YOLO"};
+		 String s = (String)JOptionPane.showInputDialog(
+                 this,
+                 "Select game level:\n",
+                 "Game Level Selection",
+                 JOptionPane.QUESTION_MESSAGE,
+                 null,
+                 props,
+                 props[2]);
+		 controller.setGameLevel(s);
 	}
+
 	private void setWindowProperties(String title, int width, int height) {
 		setTitle(title);
 		setSize(width, height);
